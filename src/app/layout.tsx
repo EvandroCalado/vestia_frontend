@@ -1,16 +1,16 @@
 import type { Metadata } from 'next';
-import { Geist } from 'next/font/google';
+import { Inter } from 'next/font/google';
 
 import '../styles/globals.css';
 
-const geistSans = Geist({
+const primary = Inter({
   variable: '--font-primary',
   subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-  title: 'Strapi auth template',
-  description: 'Authentication next with strapi',
+  title: 'Vestia Shop',
+  description: 'Affordable and stylish fashion for every occasion.',
 };
 
 export const RootLayout = ({
@@ -21,7 +21,7 @@ export const RootLayout = ({
   return (
     <html lang='pt-BR'>
       <body
-        className={`${geistSans.variable} antialiased flex h-screen flex-col`}
+        className={`${primary.variable} antialiased flex h-screen flex-col`}
       >
         <main className='flex-1'>{children}</main>
       </body>
