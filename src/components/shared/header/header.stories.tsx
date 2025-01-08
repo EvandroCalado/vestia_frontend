@@ -1,18 +1,18 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Logo } from '.';
+import { Header } from '.';
 
 const meta: Meta = {
-  title: 'Components/shared/logo',
-  component: Logo,
+  title: 'Components/Shared/Header',
+  component: Header,
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
   },
   tags: ['autodocs'],
 };
 
 export default meta;
 
-type Story = StoryObj<typeof Logo>;
+type Story = StoryObj<typeof Header>;
 
 export const Default: Story = {};
