@@ -9,23 +9,23 @@ export const MenuIcon = () => (
     <path
       d='M4.5 7H19.5'
       stroke='#5C5F6A'
-      stroke-width='1.75'
-      stroke-linecap='round'
-      stroke-linejoin='round'
+      strokeWidth='1.75'
+      strokeLinecap='round'
+      strokeLinejoin='round'
     />
     <path
       d='M4.5 12H19.5'
       stroke='#5C5F6A'
-      stroke-width='1.75'
-      stroke-linecap='round'
-      stroke-linejoin='round'
+      strokeWidth='1.75'
+      strokeLinecap='round'
+      strokeLinejoin='round'
     />
     <path
       d='M4.5 17H19.5'
       stroke='#5C5F6A'
-      stroke-width='1.75'
-      stroke-linecap='round'
-      stroke-linejoin='round'
+      strokeWidth='1.75'
+      strokeLinecap='round'
+      strokeLinejoin='round'
     />
   </svg>
 );
