@@ -5,9 +5,9 @@ import { useActionState } from 'react';
 import { loginUserAction } from '@/actions';
 import { cn } from '@/lib/utils';
 import { Label } from '@radix-ui/react-label';
-import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
+import { Logo } from '../shared';
 import {
   Button,
   Card,
@@ -33,14 +33,9 @@ export const SignInForm = ({
       {...props}
     >
       <Card>
-        <CardHeader className='relative flex flex-col items-center'>
-          <Button asChild className='absolute left-0 -top-14'>
-            <Link href='/'>
-              <ArrowLeft />
-              Back
-            </Link>
-          </Button>
-          <CardTitle className='text-2xl text-center'>Sign In</CardTitle>
+        <CardHeader className='flex flex-col items-center'>
+          <Logo />
+          <CardTitle className='text-xl text-center py-4'>Sign In</CardTitle>
           <CardDescription>
             Enter your details to sign in to your account
           </CardDescription>
@@ -72,6 +67,11 @@ export const SignInForm = ({
                 />
                 <ZodErrors error={state?.zodErrors?.password} />
               </div>
+
+              <div className='text-sm text-end text-muted-foreground'>
+                Forgot password?
+              </div>
+
               <Button type='submit' className='w-full' disabled={isPending}>
                 {isPending ? 'Loading...' : 'Sign In'}
               </Button>
