@@ -55,7 +55,7 @@ export const ForgotPasswordForm = ({ className }: { className?: string }) => {
                   type='email'
                   placeholder='email@example.com'
                 />
-                <ZodErrors error={state?.zodErrors?.identifier} />
+                <ZodErrors error={state?.zodErrors?.email} />
               </div>
 
               <Button type='submit' className='w-full' disabled={isPending}>
