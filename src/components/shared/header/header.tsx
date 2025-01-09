@@ -1,9 +1,10 @@
-import { CartIcon, ProfileIcon } from '@/icons';
+import { CartIcon } from '@/icons';
 
 import { Logo } from '../logo';
 import { Menu } from '../menu';
 import { Nav } from '../nav';
 import { PopUpHeader } from '../pop-up-header';
+import { ProfileMenu } from '../profile-menu';
 import { Search } from '../search';
 
 export const Header = () => {
@@ -19,7 +20,7 @@ export const Header = () => {
 
         <div className='flex items-center gap-4'>
           <CartIcon />
-          <ProfileIcon />
+          <ProfileMenu />
           <Menu />
         </div>
       </header>
