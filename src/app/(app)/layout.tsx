@@ -1,4 +1,4 @@
-import { Header } from '@/components/shared';
+import { Footer, Header } from '@/components/shared';
 
 export const AppLayout = async ({
   children,
@@ -8,7 +8,8 @@ export const AppLayout = async ({
   return (
     <>
       <Header />
-      {children}
+      <main className='flex-1'>{children}</main>
+      <Footer />
     </>
   );
 };
