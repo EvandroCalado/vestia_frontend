@@ -2,7 +2,7 @@
 
 import { useActionState } from 'react';
 
-import { ForgotPasswordAction } from '@/actions';
+import { forgotPasswordAction } from '@/actions';
 import { Logo } from '@/components/shared';
 import {
   Button,
@@ -19,7 +19,7 @@ import { ZodErrors } from '../zod-errors';
 
 export const ForgotPasswordForm = ({ className }: { className?: string }) => {
   const [state, formAction, isPending] = useActionState(
-    ForgotPasswordAction,
+    forgotPasswordAction,
     null,
   );
 

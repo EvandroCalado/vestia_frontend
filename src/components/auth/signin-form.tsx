@@ -69,7 +69,12 @@ export const SignInForm = ({
               </div>
 
               <div className='text-sm text-end text-muted-foreground'>
-                Forgot password?
+                <Link
+                  href='/forgot-password'
+                  className='underline underline-offset-4 hover:text-primary'
+                >
+                  Forgot password?
+                </Link>
               </div>
 
               <Button type='submit' className='w-full' disabled={isPending}>
