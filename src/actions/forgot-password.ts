@@ -3,7 +3,7 @@
 import { forgotPassword } from '@/services';
 import { z } from 'zod';
 
-const loginSchema = z.object({
+const ForgotPasswordSchema = z.object({
   email: z
     .string()
     .email()
@@ -19,7 +19,7 @@ export const ForgotPasswordAction = async (
 ) => {
   const { email } = Object.fromEntries(formData);
 
-  const validatedFields = loginSchema.safeParse({
+  const validatedFields = ForgotPasswordSchema.safeParse({
     email,
   });
 
