@@ -1,10 +1,12 @@
 import { STRAPI_URL } from '@/lib/utils';
 
-type forgotPasswordProps = {
+type forgotPasswordServiceProps = {
   email: string;
 };
 
-export const forgotPassword = async (emailData: forgotPasswordProps) => {
+export const forgotPasswordService = async (
+  emailData: forgotPasswordServiceProps,
+) => {
   const url = new URL('/api/auth/forgot-password', STRAPI_URL);
 
   try {

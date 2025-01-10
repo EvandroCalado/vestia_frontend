@@ -11,7 +11,7 @@ const config = {
   secure: process.env.NODE_ENV === 'production',
 };
 
-export const logoutUser = async () => {
+export const logoutUserAction = async () => {
   const cookieStore = await cookies();
   cookieStore.set('jwt', '', { ...config, maxAge: 0 });
 

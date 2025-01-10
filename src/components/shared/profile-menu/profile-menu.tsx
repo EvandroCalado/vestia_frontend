@@ -1,12 +1,12 @@
 import { use } from 'react';
 
-import { getAuthToken } from '@/actions';
+import { getAuthTokenAction } from '@/actions';
 import { Button } from '@/components/ui';
 import { ProfileIcon } from '@/icons';
 import Link from 'next/link';
 
 export const ProfileMenu = () => {
-  const user = use(getAuthToken());
+  const user = use(getAuthTokenAction());
 
   return (
     <div>

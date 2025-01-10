@@ -1,7 +1,7 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
-import { getUserMe } from './services';
+import { getUserMeService } from './services';
 
 // Define an array of protected routes
 const protectedRoutes = [
@@ -15,7 +15,7 @@ function isProtectedRoute(path: string): boolean {
 }
 
 export async function middleware(request: NextRequest) {
-  const user = await getUserMe();
+  const user = await getUserMeService();
   const currentPath = request.nextUrl.pathname;
 
   if (isProtectedRoute(currentPath) && user.ok === false) {

@@ -1,10 +1,10 @@
-import { getAuthToken } from '@/actions';
+import { getAuthTokenAction } from '@/actions';
 import { STRAPI_URL } from '@/lib/utils';
 
-export const getUserMe = async () => {
+export const getUserMeService = async () => {
   const url = new URL('/api/users/me', STRAPI_URL);
 
-  const authToken = await getAuthToken();
+  const authToken = await getAuthTokenAction();
 
   if (!authToken) return { ok: false, data: null, error: null };
 

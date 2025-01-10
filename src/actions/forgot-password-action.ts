@@ -1,9 +1,9 @@
 'use server';
 
-import { forgotPassword } from '@/services';
+import { forgotPasswordService } from '@/services';
 import { z } from 'zod';
 
-const ForgotPasswordSchema = z.object({
+const forgotPasswordSchema = z.object({
   email: z
     .string()
     .email()
@@ -13,13 +13,13 @@ const ForgotPasswordSchema = z.object({
     }),
 });
 
-export const ForgotPasswordAction = async (
+export const forgotPasswordAction = async (
   prevState: any,
   formData: FormData,
 ) => {
   const { email } = Object.fromEntries(formData);
 
-  const validatedFields = ForgotPasswordSchema.safeParse({
+  const validatedFields = forgotPasswordSchema.safeParse({
     email,
   });
 
@@ -31,7 +31,7 @@ export const ForgotPasswordAction = async (
     };
   }
 
-  const responseData = await forgotPassword(validatedFields.data);
+  const responseData = await forgotPasswordService(validatedFields.data);
 
   if (!responseData) {
     return {

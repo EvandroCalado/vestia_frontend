@@ -11,6 +11,9 @@ const primary = Inter({
 export const metadata: Metadata = {
   title: 'Vestia Shop',
   description: 'Affordable and stylish fashion for every occasion.',
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export const RootLayout = ({
