@@ -1,8 +1,7 @@
 import { use } from 'react';
 
-import { getAuthTokenAction } from '@/actions';
+import { getAuthTokenAction, logoutUserAction } from '@/actions';
 import { Button } from '@/components/ui';
-import { ProfileIcon } from '@/icons';
 import Link from 'next/link';
 
 export const ProfileMenu = () => {
@@ -11,7 +10,10 @@ export const ProfileMenu = () => {
   return (
     <div>
       {user ? (
-        <ProfileIcon />
+        // <ProfileIcon />
+        <form action={logoutUserAction}>
+          <Button>Logout</Button>
+        </form>
       ) : (
         <Button asChild>
           <Link href='/signin'>Sign In</Link>
