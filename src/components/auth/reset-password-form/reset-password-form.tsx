@@ -71,7 +71,11 @@ export const ResetPasswordForm = ({
                 <ZodErrors error={state?.zodErrors?.passwordConfirmation} />
               </div>
 
-              <Button type='submit' className='w-full' disabled={isPending}>
+              <Button
+                type='submit'
+                className='w-full mb-5'
+                disabled={isPending}
+              >
                 {isPending ? 'Sending...' : 'Reset password'}
               </Button>
             </div>
