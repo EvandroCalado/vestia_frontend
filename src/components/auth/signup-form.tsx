@@ -5,9 +5,9 @@ import { useActionState } from 'react';
 import { registerUserAction } from '@/actions';
 import { cn } from '@/lib/utils';
 import { Label } from '@radix-ui/react-label';
-import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
+import { Logo } from '../shared';
 import {
   Button,
   Card,
@@ -37,13 +37,8 @@ export const SignUpForm = ({
     >
       <Card>
         <CardHeader className='relative flex flex-col items-center'>
-          <Button asChild className='absolute left-0 -top-14'>
-            <Link href='/'>
-              <ArrowLeft />
-              Back
-            </Link>
-          </Button>
-          <CardTitle className='text-2xl text-center'>Sign Up</CardTitle>
+          <Logo />
+          <CardTitle className='text-xl text-center py-4'>Sign Up</CardTitle>
           <CardDescription>
             Enter your details to create a new account
           </CardDescription>
@@ -59,7 +54,7 @@ export const SignUpForm = ({
                   id='username'
                   name='username'
                   type='text'
-                  placeholder='username'
+                  placeholder='John Doe'
                 />
                 <ZodErrors error={state?.zodErrors?.username} />
               </div>
@@ -71,7 +66,7 @@ export const SignUpForm = ({
                   id='email'
                   name='email'
                   type='text'
-                  placeholder='email'
+                  placeholder='john@example.com'
                 />
                 <ZodErrors error={state?.zodErrors?.email} />
               </div>
@@ -83,7 +78,7 @@ export const SignUpForm = ({
                   id='password'
                   name='password'
                   type='password'
-                  placeholder='password'
+                  placeholder='***********'
                 />
                 <ZodErrors error={state?.zodErrors?.password} />
               </div>

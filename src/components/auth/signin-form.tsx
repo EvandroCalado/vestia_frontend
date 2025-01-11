@@ -3,7 +3,8 @@
 import { useActionState } from 'react';
 
 import { loginUserAction } from '@/actions';
-import { cn } from '@/lib/utils';
+import { GoogleIcon } from '@/icons';
+import { cn, STRAPI_URL } from '@/lib/utils';
 import { Label } from '@radix-ui/react-label';
 import Link from 'next/link';
 
@@ -51,7 +52,7 @@ export const SignInForm = ({
                   id='identifier'
                   name='identifier'
                   type='text'
-                  placeholder='Username or email'
+                  placeholder='John or john@example.com'
                 />
                 <ZodErrors error={state?.zodErrors?.identifier} />
               </div>
@@ -63,7 +64,7 @@ export const SignInForm = ({
                   id='password'
                   name='password'
                   type='password'
-                  placeholder='password'
+                  placeholder='***********'
                 />
                 <ZodErrors error={state?.zodErrors?.password} />
               </div>
@@ -79,6 +80,12 @@ export const SignInForm = ({
 
               <Button type='submit' className='w-full' disabled={isPending}>
                 {isPending ? 'Loading...' : 'Sign In'}
+              </Button>
+
+              <Button asChild variant='outline'>
+                <Link href={`${STRAPI_URL}/api/connect/google`}>
+                  <GoogleIcon /> Login with google
+                </Link>
               </Button>
             </div>
           </form>
