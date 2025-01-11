@@ -8,7 +8,7 @@ import { cn, STRAPI_URL } from '@/lib/utils';
 import { Label } from '@radix-ui/react-label';
 import Link from 'next/link';
 
-import { Logo } from '../shared';
+import { Logo } from '../../shared';
 import {
   Button,
   Card,
@@ -18,9 +18,9 @@ import {
   CardHeader,
   CardTitle,
   Input,
-} from '../ui';
-import { StrapiErrors } from './strapi-errors';
-import { ZodErrors } from './zod-errors';
+} from '../../ui';
+import { StrapiErrors } from '../strapi-errors/strapi-errors';
+import { ZodErrors } from '../zod-errors/zod-errors';
 
 export const SignInForm = ({
   className,

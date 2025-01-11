@@ -15,7 +15,7 @@ import {
 } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
-import { ZodErrors } from '../zod-errors';
+import { ZodErrors } from '../zod-errors/zod-errors';
 
 type ResetPasswordFormProps = {
   code: string;
