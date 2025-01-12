@@ -1,7 +1,5 @@
 
-![Captura de tela de 2025-01-07 20-22-33](https://github.com/user-attachments/assets/7fc15ed7-9b52-4917-b7ef-1ba56acb744e)
-
-# 🛡️ Projeto de Autenticação com Strapi e Next.js 15
+# ![logo](https://github.com/user-attachments/assets/d1bc2d23-2786-4758-848f-14e2744b3173) Vestia
 
 ## 📚 Visão Geral
 Este projeto implementa um sistema de autenticação utilizando **Strapi** como backend headless CMS e **Next.js 15** como frontend. A aplicação permite registro, login, logout e gerenciamento de sessão de usuários.
