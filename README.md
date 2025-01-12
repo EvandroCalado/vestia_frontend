@@ -1,108 +1,107 @@
+# Vestia
 
-# ![logo](https://github.com/user-attachments/assets/d1bc2d23-2786-4758-848f-14e2744b3173) Vestia
+## 📚 Overview
+This project implements an authentication system using **Strapi** as a headless CMS backend and **Next.js 15** as the frontend. The application allows user registration, login, logout, and session management.
 
-## 📚 Visão Geral
-Este projeto implementa um sistema de autenticação utilizando **Strapi** como backend headless CMS e **Next.js 15** como frontend. A aplicação permite registro, login, logout e gerenciamento de sessão de usuários.
-
-## 🚀 Tecnologias Utilizadas
+## 🚀 Technologies Used
 
 - **Strapi** (Backend)
 - **Next.js 15** (Frontend)
 - **TypeScript**
-- **TailwindCSS** (Estilização)
-- **JWT** (Autenticação via Token)
+- **TailwindCSS** (Styling)
 
-## 🛠️ Funcionalidades
+## 🛠️ Features
 
-- Registro de novos usuários
-- Autenticação e autorização com JWT
-- Proteção de rotas no Next.js
-- Persistência de sessão
-- Logout seguro
-- Redirecionamento baseado na autenticação
+- New user registration
+- Authentication and authorization with JWT
+- Route protection in Next.js
+- Session persistence
+- Secure logout
+- Authentication-based redirection
 
-## 📦 Estrutura do Projeto
+## 📦 Project Structure
 
-```
 📂 frontend (Next.js 15)
+```
 .editorconfig
 .gitignore
 .next/
 package.json
 public/
 README.md
-│   ├── src/
-│   │   ├── actions/
-│   │   ├── app/
-│   │   ├── components/
-│   │   ├── lib/
-│   │   ├── services/
-│   │   ├── styles/
+│ ├── src/ │
+│ ├── actions/
+│ │ ├── app/
+│ │ ├── components/
+│ │ ├── lib/
+│ │ ├── services/
+│ │ ├── styles/
 tailwind.config.ts
 tsconfig.json
 ```
 
-## ⚙️ Estrutura de Diretórios
-- **actions**: Contém as ações no servidor.
-- **app**: Contém as páginas e layouts.
-- **components**: Contém os componentes reutilizáveis da aplicação.
-- **lib**: Contém utilitários e funções auxiliares.
-- **services**: Contém os serviços de comunicação com o backend Strapi.
-- **styles**: Contém os arquivos de estilo.
 
-## ⚙️ Configuração backend
+## ⚙️ Directory Structure
+- **actions**: Contains server actions.
+- **app**: Contains pages and layouts.
+- **components**: Contains reusable application components.
+- **lib**: Contains utilities and helper functions.
+- **services**: Contains services for communication with the Strapi backend.
+- **styles**: Contains style files.
 
-1. Crie um projeto Strapi:
-   ```bash
-   npx create-strapi-app@latest
-   ```
-2. Suba o servidor com o comando:
-   ```bash
-   npm run develop
-   ```
-3. Abra o painel admin:
-   ```bash
-   Abra http://localhost:1337/admin no seu navegador para fazer o login.
-   ```
+## ⚙️ Backend Configuration
 
-## ⚙️ Configuração frontend
+1. Create a Strapi project:
+    ```bash
+    npx create-strapi-app@latest
+    ```
 
-1. Clone o repositório frontend:
-   ```bash
-   git clone https://github.com/EvandroCalado/auth_strapi_template
-   cd  auth_strapi_template
-   ```
-2. Instale as dependências:
-   ```bash
-   npm install
-   ```
-3. Suba o servidor com o comando:
-   ```bash
-   npm run dev
-   ```
-4. Abra o projeto:
-   ```bash
-   Abra http://localhost:3000 no seu navegador para ver o resultado.
-   ```
+2. Start the server with the command:
+    ```bash
+    npm run develop
+    ```
 
-## 🔑 Rotas
+3. Open the admin panel:
+    ```bash
+    Open http://localhost:1337/admin in your browser to log in.
+    ```
 
-- **Home:** `/`
-- **Sign In:** `/signin`
-- **Sign Up:** `/signup`
-- **Dashboard (rota protegida):** `/dashboard`
+⚙️ Frontend Configuration
 
+1. Clone the frontend repository:
+    ```bash
+    git clone https://github.com/EvandroCalado/vestia_frontend
+    cd vestia_frontend
+    ```
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+3. Start the server with the command:
+    ```bash
+    npm run dev
+    ```
+4. Open the project:
+    ```bash
+    Open http://localhost:3000 in your browser to see the result.
+    ```
 
-## 📝 Contribuição
-Contribuições são bem-vindas! Abra uma issue ou envie um PR com melhorias.
+## 🔑 Routes
+- Home: /
+- Sign In: /signin
+- Sign Up: /signup
+- Dashboard (temp protected route): /dashboard
 
-## 📄 Licença
-Este projeto está sob a licença MIT.
+## 📝 Contribution
+- Contributions are welcome! Open an issue or submit a PR with improvements.
 
-## 🤝 Contato
-- **Autor:** Evandro Calado
-- **Email:** [evandrocalado07@gmail.com](mailto:evandrocalado07@gmail.com)
+## 📄 License
+T- his project is licensed under the MIT License.
 
----
-Feito com ❤️ por Evandro Calado 🚀
+## 🤝 Contact
+- Author: Evandro Calado
+- Email: evandrocalado07@gmail.com
+
+Made with ❤️ by Evandro Calado 🚀
+
 
