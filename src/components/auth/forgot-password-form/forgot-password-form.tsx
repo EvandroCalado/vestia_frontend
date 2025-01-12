@@ -58,7 +58,11 @@ export const ForgotPasswordForm = ({ className }: { className?: string }) => {
                 <ZodErrors error={state?.zodErrors?.email} />
               </div>
 
-              <Button type='submit' className='w-full' disabled={isPending}>
+              <Button
+                type='submit'
+                className='w-full mb-6'
+                disabled={isPending}
+              >
                 {isPending ? 'Sending...' : 'Send reset link'}
               </Button>
             </div>
