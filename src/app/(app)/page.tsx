@@ -1,7 +1,9 @@
+import { Hero } from '@/components/home';
+
 export const HomePage = () => {
   return (
-    <div className='flex items-center justify-center my-72 h-full'>
-      <h1>Home</h1>
+    <div className='flex items-center justify-center h-full'>
+      <Hero />
     </div>
   );
 };
