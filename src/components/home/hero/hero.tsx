@@ -4,26 +4,31 @@ import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export const Hero = () => {
+type HeroProps = {
+  title: string;
+  description: string;
+  buttonLabel: string;
+  image: string;
+};
+
+export const Hero = ({ title, description, buttonLabel, image }: HeroProps) => {
   return (
     <section className='container grid h-full gap-8 p-5 mx-auto md:grid-cols-2'>
       <div className='flex flex-col justify-center gap-8 max-md:mx-auto'>
-        <h1>Fresh Arrivals Online</h1>
-        <p className='text-muted-foreground'>
-          Discover Our Newest Collection Today.
-        </p>
+        <h1>{title}</h1>
+        <p className='text-muted-foreground'>{description}</p>
 
         <Button asChild className='w-max'>
           <Link href='/products'>
-            View Collection <ArrowRight />
+            {buttonLabel} <ArrowRight />
           </Link>
         </Button>
       </div>
 
-      <div className='relative aspect-square max-md:mx-auto md:h-[380px] lg:h-[600px] md:ml-auto'>
+      <div className='relative aspect-square max-md:mx-auto md:h-[360px] lg:h-[600px] md:ml-auto'>
         <Image
-          src='/images/hero.png'
-          alt='Hero'
+          src={image}
+          alt={title}
           width={500}
           height={800}
           priority
