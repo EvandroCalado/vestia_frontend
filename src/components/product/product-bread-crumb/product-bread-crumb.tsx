@@ -16,7 +16,7 @@ export const ProductBreadCrumb = () => {
   const productName = slugPath.replaceAll('-', ' ');
 
   return (
-    <Breadcrumb>
+    <Breadcrumb className='my-8'>
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink href='/'>Home</BreadcrumbLink>

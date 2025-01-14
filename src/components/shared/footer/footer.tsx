@@ -5,17 +5,17 @@ import { Logo } from '../logo';
 
 const links = [
   {
-    id: 1,
+    id: 350,
     title: 'support',
     nested: ['faq', 'terms of use', 'privacy policy'],
   },
   {
-    id: 2,
+    id: 351,
     title: 'company',
     nested: ['about us', 'contact', 'careers'],
   },
   {
-    id: 3,
+    id: 352,
     title: 'shop',
     nested: ['my account', 'checkout', 'cart'],
   },
