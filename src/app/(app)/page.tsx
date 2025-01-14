@@ -1,5 +1,9 @@
-import { BestSelling, Hero, Services } from '@/components/home';
-import { productList } from '@/utils';
+import {
+  BestSelling,
+  FeaturedAndLatest,
+  Hero,
+  Services,
+} from '@/components/home';
 
 const firstHero = {
   title: 'Fresh Arrivals Online',
@@ -21,8 +25,9 @@ export const HomePage = () => {
     <div className='flex flex-col items-center justify-center h-full space-y-8'>
       <Hero {...firstHero} />
       <Services />
-      <BestSelling products={productList} />
+      <BestSelling />
       <Hero {...secondHero} />
+      <FeaturedAndLatest />
     </div>
   );
 };

@@ -1,10 +1,7 @@
-import { ProductCard, ProductCardProps } from '@/components/product';
+import { ProductCard } from '@/components/product';
+import { productList } from '@/utils';
 
-type BestSellingProps = {
-  products: ProductCardProps[];
-};
-
-export const BestSelling = ({ products }: BestSellingProps) => {
+export const BestSelling = () => {
   return (
     <section className='container flex flex-col items-center justify-center gap-16 p-5 mx-auto'>
       <div>
@@ -13,7 +10,7 @@ export const BestSelling = ({ products }: BestSellingProps) => {
       </div>
 
       <div className='grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
-        {products.map((product) => (
+        {productList.map((product) => (
           <ProductCard key={product.slug} {...product} />
         ))}
       </div>

@@ -23,7 +23,7 @@ const links = [
 
 export const Footer = () => {
   return (
-    <footer className='container p-5 mx-auto'>
+    <footer className='container p-5 mx-auto mt-16'>
       <div className='flex flex-col items-center justify-between gap-8 md:gap-16 md:flex-row'>
         <div className='flex flex-col items-center w-full md:mb-auto md:items-start md:w-1/5'>
           <Logo className='mb-6' />
