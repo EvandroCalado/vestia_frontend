@@ -26,7 +26,7 @@ export const ProductCard = ({
 }: ProductCardProps) => {
   return (
     <Card>
-      <Link href={`/product/${slug}`} className='group'>
+      <Link href={`/products/${slug}`} className='group'>
         <CardHeader className='overflow-hidden'>
           <Image
             src={image}
