@@ -34,7 +34,10 @@ export const Footer = () => {
 
         <div className='flex justify-between w-full gap-5 md:w-3/5 md:gap-6'>
           {links.map((link) => (
-            <div key={link.id} className='flex flex-col text-muted-foreground'>
+            <div
+              key={`${link.id}-${link.title}`}
+              className='flex flex-col text-muted-foreground'
+            >
               <p className='mb-6 font-light uppercase'>{link.title}</p>
 
               {link.nested.map((nest) => (

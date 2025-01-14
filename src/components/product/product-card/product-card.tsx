@@ -34,7 +34,8 @@ export const ProductCard = ({
             width={200}
             height={300}
             priority
-            className='duration-150 group-hover:scale-105'
+            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+            className='duration-150 group-hover:scale-105 w-auto'
           />
         </CardHeader>
         <CardContent>

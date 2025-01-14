@@ -32,6 +32,7 @@ export const Hero = ({ title, description, buttonLabel, image }: HeroProps) => {
           width={500}
           height={800}
           priority
+          sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
           className='object-contain h-full ml-auto w-max'
         />
 
