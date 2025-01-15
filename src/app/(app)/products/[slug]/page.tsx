@@ -1,4 +1,8 @@
-import { ProductBreadCrumb, ProductSlide } from '@/components/product';
+import {
+  ProductBreadCrumb,
+  ProductDetails,
+  ProductSlide,
+} from '@/components/product';
 
 const images = [
   '/images/slide1.png',
@@ -7,11 +11,28 @@ const images = [
   '/images/slide4.png',
 ];
 
+const productDetails = {
+  title: 'raw black t-shirt lineup',
+  rating: {
+    score: 4.2,
+    numReviews: 54,
+  },
+  inStock: true,
+  price: 75,
+  colors: ['#9fbcf4', '#ffd792', '#7eb28e'],
+  sizes: ['s', 'l', 'xl'],
+  quantity: 5,
+};
+
 const ProductPage = () => {
   return (
-    <div className='container mx-auto p-5'>
+    <div className='container p-5 mx-auto'>
       <ProductBreadCrumb />
-      <ProductSlide images={images} />
+
+      <div className='grid gap-8 md:mx-16 md:grid-cols-2 md:gap-16'>
+        <ProductSlide images={images} />
+        <ProductDetails {...productDetails} />
+      </div>
     </div>
   );
 };

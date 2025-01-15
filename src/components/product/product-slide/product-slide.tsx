@@ -15,7 +15,7 @@ type ProductSlideProps = {
 
 export const ProductSlide = ({ images }: ProductSlideProps) => {
   return (
-    <Carousel className='w-full max-w-xs'>
+    <Carousel className='w-full max-w-2xl h-max'>
       <CarouselContent>
         {images.map((image) => (
           <CarouselItem
