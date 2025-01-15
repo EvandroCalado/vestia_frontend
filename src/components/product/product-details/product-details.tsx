@@ -2,12 +2,13 @@ import { Button } from '@/components/ui';
 import { HeartIcon } from '@/icons';
 import { MinusIcon, PlusIcon } from 'lucide-react';
 
+import { ProductColors } from '../product-colors';
 import { ProductPrice } from '../product-price';
 import { ProductRating } from '../product-rating';
 
-type Rating = {
-  score: number;
-  numReviews: number;
+type Colors = {
+  name: string;
+  color: string;
 };
 
 type ProductDetailsProps = {
@@ -16,7 +17,7 @@ type ProductDetailsProps = {
   numReviews: number;
   inStock: boolean;
   price: number;
-  colors: string[];
+  colors: Colors[];
   sizes: string[];
   quantity: number;
 };
@@ -42,20 +43,7 @@ export const ProductDetails = ({
       <ProductPrice price={price} />
 
       {/* colors */}
-      <div className='space-y-4'>
-        <h5 className='font-normal uppercase text-muted-foreground'>
-          available colors
-        </h5>
-        <div className='flex items-center gap-4'>
-          {colors.map((color) => (
-            <button
-              key={color}
-              style={{ backgroundColor: color }}
-              className='w-6 h-6 duration-150 rounded-full ring-1 ring-transparent hover:ring-primary ring-offset-4'
-            />
-          ))}
-        </div>
-      </div>
+      <ProductColors colors={colors} />
 
       {/* sizes */}
       <div className='space-y-4'>

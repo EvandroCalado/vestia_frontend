@@ -17,7 +17,20 @@ const productDetails = {
   numReviews: 54,
   inStock: true,
   price: 75,
-  colors: ['#9fbcf4', '#ffd792', '#7eb28e'],
+  colors: [
+    {
+      name: 'blue',
+      color: '#9fbcf4',
+    },
+    {
+      name: 'yellow',
+      color: '#ffd792',
+    },
+    {
+      name: 'green',
+      color: '#7eb28e',
+    },
+  ],
   sizes: ['s', 'l', 'xl'],
   quantity: 5,
 };
