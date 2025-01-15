@@ -1,8 +1,8 @@
 import { Button } from '@/components/ui';
 import { HeartIcon } from '@/icons';
-import { currencyFormat } from '@/utils';
 import { MinusIcon, PlusIcon } from 'lucide-react';
 
+import { ProductPrice } from '../product-price';
 import { ProductRating } from '../product-rating';
 
 type Rating = {
@@ -39,7 +39,7 @@ export const ProductDetails = ({
       <ProductRating score={score} numReviews={numReviews} inStock={inStock} />
 
       {/* price */}
-      <h3>{currencyFormat(price)}</h3>
+      <ProductPrice price={price} />
 
       {/* colors */}
       <div className='space-y-4'>
