@@ -72,7 +72,7 @@ export const ProductDetails = ({
           {sizes.map((size) => (
             <button
               key={size}
-              className='w-10 h-10 uppercase border-[1px] rounded-md border-gray-200 duration-150 hover:border-primary'
+              className='w-9 h-9 uppercase border-[1px] rounded-md border-gray-200 duration-150 hover:border-primary'
             >
               {size}
             </button>
@@ -86,11 +86,11 @@ export const ProductDetails = ({
           quantity
         </h5>
         <div className='flex items-center border-[1px] rounded-md border-gray-200 w-max'>
-          <Button variant='ghost' className='w-11 h-11'>
+          <Button variant='ghost' className='w-9 h-9'>
             <MinusIcon />
           </Button>
-          <span className='flex items-center justify-center w-16 h-11'>1</span>
-          <Button variant='ghost'>
+          <span className='flex items-center justify-center w-9 h-9'>1</span>
+          <Button variant='ghost' className='w-9 h-9'>
             <PlusIcon />
           </Button>
         </div>
@@ -99,8 +99,8 @@ export const ProductDetails = ({
       {/* add to cart */}
       <div className='flex flex-col items-start space-y-4'>
         <div className='flex items-center w-full gap-4'>
-          <Button className='w-full md:w-72 h-11'>Add to cart</Button>
-          <Button className='w-11 h-11' variant='outline'>
+          <Button className='w-full md:w-72'>Add to cart</Button>
+          <Button variant='outline' size='icon'>
             <HeartIcon />
           </Button>
         </div>
