@@ -5,6 +5,7 @@ import { MinusIcon, PlusIcon } from 'lucide-react';
 import { ProductColors } from '../product-colors';
 import { ProductPrice } from '../product-price';
 import { ProductRating } from '../product-rating';
+import { ProductSizes } from '../product-sizes';
 
 type Colors = {
   name: string;
@@ -46,21 +47,7 @@ export const ProductDetails = ({
       <ProductColors colors={colors} />
 
       {/* sizes */}
-      <div className='space-y-4'>
-        <h5 className='font-normal uppercase text-muted-foreground'>
-          select size
-        </h5>
-        <div className='flex items-center gap-4'>
-          {sizes.map((size) => (
-            <button
-              key={size}
-              className='w-9 h-9 uppercase border-[1px] rounded-md border-gray-200 duration-150 hover:border-primary'
-            >
-              {size}
-            </button>
-          ))}
-        </div>
-      </div>
+      <ProductSizes sizes={sizes} />
 
       {/* quantity */}
       <div className='space-y-4 text-start'>
