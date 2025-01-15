@@ -1,7 +1,9 @@
 import { Button } from '@/components/ui';
-import { HeartIcon, StarIcon } from '@/icons';
+import { HeartIcon } from '@/icons';
 import { currencyFormat } from '@/utils';
 import { MinusIcon, PlusIcon } from 'lucide-react';
+
+import { ProductRating } from '../product-rating';
 
 type Rating = {
   score: number;
@@ -10,7 +12,8 @@ type Rating = {
 
 type ProductDetailsProps = {
   title: string;
-  rating: Rating;
+  score: number;
+  numReviews: number;
   inStock: boolean;
   price: number;
   colors: string[];
@@ -20,7 +23,8 @@ type ProductDetailsProps = {
 
 export const ProductDetails = ({
   title,
-  rating,
+  score,
+  numReviews,
   inStock,
   price,
   colors,
@@ -32,17 +36,7 @@ export const ProductDetails = ({
       <h2 className='capitalize'>{title}</h2>
 
       {/* rating */}
-      <div className='flex items-center gap-4'>
-        <StarIcon />
-
-        <div className='flex items-center gap-1 text-muted-foreground'>
-          <span>{rating.score}</span>
-          <span className='bg-muted-foreground w-4 h-0.5 inline-block' />
-          <span>{rating.numReviews} Reviews</span>
-        </div>
-
-        <div>{inStock ? 'in stock' : 'ou of stock'}</div>
-      </div>
+      <ProductRating score={score} numReviews={numReviews} inStock={inStock} />
 
       {/* price */}
       <h3>{currencyFormat(price)}</h3>

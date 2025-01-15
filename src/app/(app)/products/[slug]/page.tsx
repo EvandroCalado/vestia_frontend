@@ -13,10 +13,8 @@ const images = [
 
 const productDetails = {
   title: 'raw black t-shirt lineup',
-  rating: {
-    score: 4.2,
-    numReviews: 54,
-  },
+  score: 4.2,
+  numReviews: 54,
   inStock: true,
   price: 75,
   colors: ['#9fbcf4', '#ffd792', '#7eb28e'],
