@@ -1,9 +1,9 @@
 import { Button } from '@/components/ui';
 import { HeartIcon } from '@/icons';
-import { MinusIcon, PlusIcon } from 'lucide-react';
 
 import { ProductColors } from '../product-colors';
 import { ProductPrice } from '../product-price';
+import { ProductQuantity } from '../product-quantity';
 import { ProductRating } from '../product-rating';
 import { ProductSizes } from '../product-sizes';
 
@@ -37,33 +37,11 @@ export const ProductDetails = ({
     <div className='space-y-8'>
       <h2 className='capitalize'>{title}</h2>
 
-      {/* rating */}
       <ProductRating score={score} numReviews={numReviews} inStock={inStock} />
-
-      {/* price */}
       <ProductPrice price={price} />
-
-      {/* colors */}
       <ProductColors colors={colors} />
-
-      {/* sizes */}
       <ProductSizes sizes={sizes} />
-
-      {/* quantity */}
-      <div className='space-y-4 text-start'>
-        <h5 className='font-normal uppercase text-muted-foreground'>
-          quantity
-        </h5>
-        <div className='flex items-center border-[1px] rounded-md border-gray-200 w-max'>
-          <Button variant='ghost' className='w-9 h-9'>
-            <MinusIcon />
-          </Button>
-          <span className='flex items-center justify-center w-9 h-9'>1</span>
-          <Button variant='ghost' className='w-9 h-9'>
-            <PlusIcon />
-          </Button>
-        </div>
-      </div>
+      <ProductQuantity quantity={quantity} />
 
       {/* add to cart */}
       <div className='flex flex-col items-start space-y-4'>
