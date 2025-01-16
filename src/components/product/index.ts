@@ -7,4 +7,5 @@ export * from './product-quantity';
 export * from './product-rating';
 export * from './product-sizes';
 export * from './product-slide';
+export * from './product-tabs';
 export * from './products-with-four-cards';
