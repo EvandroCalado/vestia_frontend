@@ -7,7 +7,11 @@ export const Nav = ({ className }: { className?: string }) => {
       className={cn('flex items-center gap-4 text-muted-foreground', className)}
     >
       {navLinks.map((link) => (
-        <Link key={link.id} href={link.href}>
+        <Link
+          key={link.id}
+          href={link.href}
+          className='hover:text-primary duration-150'
+        >
           {link.label}
         </Link>
       ))}
