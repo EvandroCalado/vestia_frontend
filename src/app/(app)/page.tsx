@@ -7,14 +7,14 @@ import {
 } from '@/components/home';
 
 export const HomePage = async () => {
-  const [banners1, banners2] = await getBannersAction();
+  const [banner1, banner2] = await getBannersAction();
 
   return (
     <div className='flex flex-col items-center justify-center h-full space-y-8'>
-      <Hero {...banners1} />
+      <Hero {...banner1} />
       <Services />
       <BestSelling />
-      <Hero {...banners2} />
+      <Hero {...banner2} />
       <FeaturedAndLatest />
     </div>
   );
