@@ -8,6 +8,7 @@ import {
 
 export const HomePage = async () => {
   const banners = await getBannersAction();
+
   const [banner1, banner2] = banners ?? [];
 
   return (
