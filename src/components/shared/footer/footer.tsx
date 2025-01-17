@@ -42,6 +42,7 @@ export const Footer = () => {
 
               {link.nested.map((nest) => (
                 <Link
+                  key={nest}
                   href={nest}
                   className='mb-3 text-sm capitalize hover:text-primary'
                 >
