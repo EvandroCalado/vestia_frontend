@@ -7,20 +7,23 @@ import Link from 'next/link';
 type HeroProps = {
   title: string;
   description: string;
-  buttonLabel: string;
+  button: {
+    title: string;
+    href: string;
+  };
   image: string;
 };
 
-export const Hero = ({ title, description, buttonLabel, image }: HeroProps) => {
+export const Hero = ({ title, description, button, image }: HeroProps) => {
   return (
     <section className='container grid h-full gap-8 p-5 mx-auto md:grid-cols-2'>
       <div className='flex flex-col justify-center gap-8 max-md:mx-auto'>
-        <h1>{title}</h1>
+        <h1 className='capitalize'>{title}</h1>
         <p className='text-muted-foreground'>{description}</p>
 
-        <Button asChild className='w-max'>
-          <Link href='/products'>
-            {buttonLabel} <ArrowRight />
+        <Button asChild className='w-max capitalize'>
+          <Link href={button.href}>
+            {button.title} <ArrowRight />
           </Link>
         </Button>
       </div>
