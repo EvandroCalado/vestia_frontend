@@ -1,6 +1,7 @@
+import { HeroProps } from '@/components/home';
 import { StrapiBannersType } from '@/types';
 
-export const bannerMapper = (banners: StrapiBannersType) =>
+export const bannerMapper = (banners: StrapiBannersType): HeroProps[] =>
   banners.data.map((banner) => {
     return {
       title: banner.title,

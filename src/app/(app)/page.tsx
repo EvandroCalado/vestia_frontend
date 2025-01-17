@@ -7,7 +7,8 @@ import {
 } from '@/components/home';
 
 export const HomePage = async () => {
-  const [banner1, banner2] = await getBannersAction();
+  const banners = await getBannersAction();
+  const [banner1, banner2] = banners ?? [];
 
   return (
     <div className='flex flex-col items-center justify-center h-full space-y-8'>
