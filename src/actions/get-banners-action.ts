@@ -1,6 +1,7 @@
 'use server';
 
 import { STRAPI_URL } from '@/lib/utils';
+import { bannerMapper } from '@/mappers';
 import { StrapiBannersType } from '@/types';
 
 export const getBannersAction = async () => {
@@ -13,17 +14,5 @@ export const getBannersAction = async () => {
     return [];
   }
 
-  const bannersMapper = banners.data.map((banner) => {
-    return {
-      title: banner.title,
-      description: banner.description,
-      button: {
-        title: banner.button.title,
-        href: banner.button.href,
-      },
-      image: banner.image.formats.medium.url,
-    };
-  });
-
-  return bannersMapper;
+  return bannerMapper(banners);
 };
