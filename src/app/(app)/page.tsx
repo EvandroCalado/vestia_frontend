@@ -1,3 +1,4 @@
+import { getBannersAction } from '@/actions';
 import {
   BestSelling,
   FeaturedAndLatest,
@@ -5,28 +6,15 @@ import {
   Services,
 } from '@/components/home';
 
-const firstHero = {
-  title: 'Fresh Arrivals Online',
-  description: 'Discover Our Newest Collection Today.',
-  buttonLabel: 'View Collection',
-  image: '/images/hero1.png',
-};
+export const HomePage = async () => {
+  const [banners1, banners2] = await getBannersAction();
 
-const secondHero = {
-  title: 'Browse Our Fashion Paradise!',
-  description:
-    'Step into a world of style and explore our diverse collection of clothing categories.',
-  buttonLabel: 'Start Browsing',
-  image: '/images/hero2.png',
-};
-
-export const HomePage = () => {
   return (
     <div className='flex flex-col items-center justify-center h-full space-y-8'>
-      <Hero {...firstHero} />
+      <Hero {...banners1} />
       <Services />
       <BestSelling />
-      <Hero {...secondHero} />
+      <Hero {...banners2} />
       <FeaturedAndLatest />
     </div>
   );
