@@ -7,41 +7,38 @@ import { ProductQuantity } from '../product-quantity';
 import { ProductRating } from '../product-rating';
 import { ProductSizes } from '../product-sizes';
 
-type Colors = {
-  name: string;
+export type Variant = {
+  id: number;
+  title: string;
   color: string;
+  size: string;
+  quantity: number;
+  images: string[];
 };
 
 type ProductDetailsProps = {
   title: string;
-  score: number;
-  numReviews: number;
+  description: string;
   inStock: boolean;
   price: number;
-  colors: Colors[];
-  sizes: string[];
-  quantity: number;
+  variants: Variant[];
 };
 
 export const ProductDetails = ({
   title,
-  score,
-  numReviews,
   inStock,
   price,
-  colors,
-  sizes,
-  quantity,
+  variants,
 }: ProductDetailsProps) => {
   return (
     <div className='space-y-8'>
       <h2 className='capitalize'>{title}</h2>
 
-      <ProductRating score={score} numReviews={numReviews} inStock={inStock} />
+      <ProductRating score={2.5} numReviews={30} inStock={inStock} />
       <ProductPrice price={price} />
-      <ProductColors colors={colors} />
-      <ProductSizes sizes={sizes} />
-      <ProductQuantity quantity={quantity} />
+      <ProductColors variants={variants} />
+      <ProductSizes variants={variants} />
+      <ProductQuantity variants={variants} />
 
       {/* add to cart */}
       <div className='flex flex-col items-start space-y-4'>
