@@ -1,8 +1,11 @@
 import { getBestSellingProductsAction } from '@/actions';
 import { ProductCard } from '@/components/product';
+import { notFound } from 'next/navigation';
 
 export const BestSelling = async () => {
   const bestSellingProducts = await getBestSellingProductsAction();
+
+  if (!bestSellingProducts) notFound();
 
   return (
     <section className='container flex flex-col items-center justify-center gap-16 p-5 mx-auto'>
