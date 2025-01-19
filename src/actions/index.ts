@@ -2,6 +2,7 @@ export * from './forgot-password-action';
 export * from './get-auth-token-action';
 export * from './get-banners-action';
 export * from './get-best-selling-products-action';
+export * from './get-product-by-slug-action';
 export * from './login-social-action';
 export * from './login-user-action';
 export * from './logout-user-action';
