@@ -1,24 +1,38 @@
-type Colors = {
-  name: string;
-  color: string;
-};
+'use client';
+
+import { cn } from '@/lib/utils';
+import { useVariantStore } from '@/stores';
+
+import { Variant } from '../product-details';
 
 type ProductColorsProps = {
-  colors: Colors[];
+  variants: Variant[];
 };
 
-export const ProductColors = ({ colors }: ProductColorsProps) => {
+export const ProductColors = ({ variants }: ProductColorsProps) => {
+  const { color, setColor } = useVariantStore();
+
+  const uniqueColors = Array.from(
+    new Map(variants.map((variant) => [variant.title, variant])).values(),
+  );
+
   return (
     <div className='space-y-4'>
       <h5 className='font-normal uppercase text-muted-foreground'>
         available colors
       </h5>
       <div className='flex items-center gap-4'>
-        {colors.map((color) => (
+        {uniqueColors.map((uniqueColor) => (
           <button
-            key={color.color}
-            style={{ backgroundColor: color.color }}
-            className='w-6 h-6 duration-150 rounded-full ring-1 ring-transparent hover:ring-primary ring-offset-4'
+            key={uniqueColor.title}
+            style={{ backgroundColor: uniqueColor.color }}
+            className={cn(
+              'w-6 h-6 duration-150 rounded-full ring-1 ring-transparent hover:ring-primary ring-offset-4',
+              {
+                'ring-primary': color === uniqueColor.title,
+              },
+            )}
+            onClick={() => setColor(uniqueColor.title)}
           />
         ))}
       </div>
