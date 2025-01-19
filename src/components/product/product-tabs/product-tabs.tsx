@@ -17,7 +17,7 @@ type ProductTabsProps = {
 export const ProductTabs = ({ description }: ProductTabsProps) => {
   return (
     <Tabs className='grid grid-cols-6 gap-16' defaultValue='details'>
-      <TabsList className='col-span-1 flex flex-col items-start gap-4 h-max py-16'>
+      <TabsList className='flex flex-col items-start col-span-1 gap-4 py-16 h-max'>
         <TabsTrigger value='details' asChild>
           <Button variant='ghost'>
             <MoreIcon /> Details
@@ -34,7 +34,7 @@ export const ProductTabs = ({ description }: ProductTabsProps) => {
         <h5>Details</h5>
         <div
           dangerouslySetInnerHTML={{ __html: description }}
-          className='space-y-4 [&>ul]:list-disc [&>ul]:ml-8 text-muted-foreground'
+          className='space-y-4 text-muted-foreground'
         />
       </TabsContent>
       <TabsContent value='reviews' className='col-span-5 space-y-8'>
@@ -48,7 +48,7 @@ export const ProductTabs = ({ description }: ProductTabsProps) => {
 
         <Button variant='outline'>Write review</Button>
 
-        <div className='flex flex-col gap-4 w-full'>
+        <div className='flex flex-col w-full gap-4'>
           <>
             <Avatar>
               <AvatarImage src='https://github.com/shadcn.png' alt='Avatar' />
@@ -101,7 +101,7 @@ export const ProductTabs = ({ description }: ProductTabsProps) => {
             </div>
           </>
 
-          <Button variant='outline' className='w-max mx-auto mt-16'>
+          <Button variant='outline' className='mx-auto mt-16 w-max'>
             Load more reviews
           </Button>
         </div>
