@@ -3,6 +3,7 @@ import {
   ProductBreadCrumb,
   ProductDetails,
   ProductSlide,
+  ProductTabs,
 } from '@/components/product';
 import { notFound } from 'next/navigation';
 
@@ -25,7 +26,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
         <ProductDetails {...product} />
       </div>
 
-      {/* <ProductTabs description={product?.description} /> */}
+      <ProductTabs description={product.description} />
     </div>
   );
 };
