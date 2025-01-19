@@ -1,5 +1,5 @@
-import { ProductCardProps } from '@/components/product';
 import { STRAPI_URL } from '@/lib/utils';
+import { bestSellingProductMapper } from '@/mappers';
 import { StrapiProductsType } from '@/types';
 
 export const getBestSellingProductsAction = async () => {
@@ -12,17 +12,12 @@ export const getBestSellingProductsAction = async () => {
     const response = await fetch(url);
     const bestSellingProducts: StrapiProductsType = await response.json();
 
-    return bestSellingProducts.data.map((product): ProductCardProps => {
-      return {
-        id: product.id,
-        image: product.variant[0].images[0].formats.small.url,
-        title: product.title,
-        slug: product.slug,
-        inStock: !!product.variant[0].quantity,
-        price: product.price,
-      };
-    });
+    if (!response.ok) {
+      throw new Error('Products not fond.');
+    }
+
+    return bestSellingProductMapper(bestSellingProducts);
   } catch (error) {
-    console.error('Get best selling action:', error);
+    throw new Error('Internal server error.');
   }
 };
