@@ -25,9 +25,9 @@ export const ProductCard = ({
   price,
 }: ProductCardProps) => {
   return (
-    <Card>
+    <Card className='overflow-hidden'>
       <Link href={`/products/${slug}`} className='group'>
-        <CardHeader className='overflow-hidden p-0'>
+        <CardHeader className='p-0 overflow-hidden'>
           <Image
             src={image}
             alt={title}
@@ -35,7 +35,7 @@ export const ProductCard = ({
             height={300}
             priority
             sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-            className='duration-150 object-contain rounded-tl-xl rounded-tr-xl group-hover:scale-105 w-auto'
+            className='object-contain w-auto duration-300 rounded-tl-xl rounded-tr-xl group-hover:scale-105'
           />
         </CardHeader>
         <CardContent>
