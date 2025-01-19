@@ -5,18 +5,19 @@ import {
   Hero,
   Services,
 } from '@/components/home';
+import { notFound } from 'next/navigation';
 
 export const HomePage = async () => {
   const banners = await getBannersAction();
 
-  const [banner1, banner2] = banners ?? [];
+  if (!banners) notFound();
 
   return (
     <div className='flex flex-col items-center justify-center h-full space-y-8'>
-      <Hero {...banner1} />
+      <Hero {...banners[0]} />
       <Services />
       <BestSelling />
-      <Hero {...banner2} />
+      <Hero {...banners[1]} />
       <FeaturedAndLatest />
     </div>
   );
