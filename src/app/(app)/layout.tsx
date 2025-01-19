@@ -6,11 +6,11 @@ export const AppLayout = async ({
   children: React.ReactNode;
 }>) => {
   return (
-    <>
+    <main className='flex flex-col h-screen'>
       <Header />
-      <main className='flex-1'>{children}</main>
+      <div className='flex-1'>{children}</div>
       <Footer />
-    </>
+    </main>
   );
 };
 

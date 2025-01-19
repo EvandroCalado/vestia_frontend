@@ -23,11 +23,7 @@ export const RootLayout = ({
 }>) => {
   return (
     <html lang='pt-BR'>
-      <body
-        className={`${primary.variable} antialiased flex min-h-screen flex-col`}
-      >
-        {children}
-      </body>
+      <body className={`${primary.variable} antialiased`}>{children}</body>
     </html>
   );
 };
