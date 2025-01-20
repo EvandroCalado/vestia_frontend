@@ -1,6 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui';
+import { useVariants } from '@/hooks';
 import { useVariantStore } from '@/stores';
 import { MinusIcon, PlusIcon } from 'lucide-react';
 
@@ -11,11 +12,9 @@ type ProductQuantityProps = {
 };
 
 export const ProductQuantity = ({ variants }: ProductQuantityProps) => {
-  const { color, size, quantity, incQuantity, decQuantity } = useVariantStore();
+  const { quantity, incQuantity, decQuantity } = useVariantStore();
 
-  const currentQuantity = variants
-    .filter((variant) => variant.title === color && variant.size === size)
-    .map((variant) => variant.quantity)[0];
+  const { currentQuantity } = useVariants(variants);
 
   return (
     <div className='space-y-4 text-start'>

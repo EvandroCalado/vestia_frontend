@@ -6,6 +6,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui';
+import { useVariants } from '@/hooks';
 import { cn } from '@/lib/utils';
 import { useVariantStore } from '@/stores';
 
@@ -18,9 +19,7 @@ type ProductColorsProps = {
 export const ProductColors = ({ variants }: ProductColorsProps) => {
   const { color, setColor } = useVariantStore();
 
-  const uniqueColors = Array.from(
-    new Map(variants.map((variant) => [variant.title, variant])).values(),
-  );
+  const { uniqueVariants } = useVariants(variants);
 
   return (
     <div className='space-y-4'>
@@ -28,23 +27,23 @@ export const ProductColors = ({ variants }: ProductColorsProps) => {
         available colors
       </h5>
       <div className='flex items-center gap-4'>
-        {uniqueColors.map((uniqueColor) => (
-          <TooltipProvider key={uniqueColor.title}>
+        {uniqueVariants.map((variant) => (
+          <TooltipProvider key={variant.title}>
             <Tooltip>
               <TooltipTrigger asChild>
                 <button
-                  style={{ backgroundColor: uniqueColor.color }}
+                  style={{ backgroundColor: variant.color }}
                   className={cn(
                     'w-6 h-6 duration-150 rounded-full ring-1 ring-transparent hover:ring-primary ring-offset-4',
                     {
-                      'ring-primary': color === uniqueColor.title,
+                      'ring-primary': color === variant.title,
                     },
                   )}
-                  onClick={() => setColor(uniqueColor.title)}
+                  onClick={() => setColor(variant.title)}
                 />
               </TooltipTrigger>
               <TooltipContent>
-                <p>{uniqueColor.title}</p>
+                <p>{variant.title}</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>

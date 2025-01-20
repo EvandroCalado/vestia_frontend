@@ -1,22 +1,20 @@
 'use client';
 
+import { useVariants } from '@/hooks';
 import { cn } from '@/lib/utils';
 import { useVariantStore } from '@/stores';
 
 import { Variant } from '../product-details';
 
-const allSizes = ['s', 'm', 'x', 'xl', 'xxl'];
-
 type ProductSizesProps = {
   variants: Variant[];
+  allSizes: string[];
 };
 
-export const ProductSizes = ({ variants }: ProductSizesProps) => {
-  const { color, size, setSize } = useVariantStore();
+export const ProductSizes = ({ variants, allSizes }: ProductSizesProps) => {
+  const { size, setSize } = useVariantStore();
 
-  const currentSizes = variants
-    .filter((variant) => variant.title === color)
-    .map((variant) => variant.size);
+  const { currentSizes } = useVariants(variants);
 
   return (
     <div className='space-y-4'>

@@ -7,17 +7,22 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui';
+import { useVariants } from '@/hooks';
 import Image from 'next/image';
 
+import { Variant } from '../product-details';
+
 type ProductSlideProps = {
-  images: string[];
+  variants: Variant[];
 };
 
-export const ProductSlide = ({ images }: ProductSlideProps) => {
+export const ProductSlide = ({ variants }: ProductSlideProps) => {
+  const { currentVariant } = useVariants(variants);
+
   return (
     <Carousel className='w-full max-w-2xl h-max'>
       <CarouselContent>
-        {images.map((image) => (
+        {currentVariant.images.map((image) => (
           <CarouselItem
             key={image}
             className='flex items-center justify-center'
