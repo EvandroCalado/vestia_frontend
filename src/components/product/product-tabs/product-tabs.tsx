@@ -58,10 +58,7 @@ export const ProductTabs = ({ description }: ProductTabsProps) => {
               <div className='flex items-center justify-between'>
                 <h6>Emily Davis</h6>
                 <div className='flex items-center'>
-                  <StarIcon />
-                  <StarIcon />
-                  <StarIcon />
-                  <StarIcon />
+                  {'<StarIcon />'.repeat(5)}
                   <EmptyStarIcon />
                 </div>
               </div>
