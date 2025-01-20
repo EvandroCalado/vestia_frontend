@@ -1,3 +1,4 @@
+export * from './product-add-to-cart';
 export * from './product-bread-crumb';
 export * from './product-card';
 export * from './product-colors';
