@@ -1,6 +1,4 @@
-import { Button } from '@/components/ui';
-import { HeartIcon } from '@/icons';
-
+import { ProductAddToCart } from '../product-add-to-cart';
 import { ProductColors } from '../product-colors';
 import { ProductPrice } from '../product-price';
 import { ProductQuantity } from '../product-quantity';
@@ -24,6 +22,8 @@ type ProductDetailsProps = {
   variants: Variant[];
 };
 
+const allSizes = ['s', 'm', 'x', 'xl', 'xxl'];
+
 export const ProductDetails = ({
   title,
   inStock,
@@ -37,22 +37,9 @@ export const ProductDetails = ({
       <ProductRating score={2.5} numReviews={30} inStock={inStock} />
       <ProductPrice price={price} />
       <ProductColors variants={variants} />
-      <ProductSizes variants={variants} />
+      <ProductSizes variants={variants} allSizes={allSizes} />
       <ProductQuantity variants={variants} />
-
-      {/* add to cart */}
-      <div className='flex flex-col items-start space-y-4'>
-        <div className='flex items-center w-full gap-4'>
-          <Button className='w-full md:w-72'>Add to cart</Button>
-          <Button variant='outline' size='icon'>
-            <HeartIcon />
-          </Button>
-        </div>
-        <h6 className='flex items-center justify-center gap-2 uppercase text-muted-foreground'>
-          <span className='bg-muted-foreground w-4 h-0.5 inline-block' />
-          free shipping on orders $100+
-        </h6>
-      </div>
+      <ProductAddToCart />
     </div>
   );
 };
