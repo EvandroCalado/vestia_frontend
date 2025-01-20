@@ -3,28 +3,6 @@ export type StrapiProductsType = {
   meta: string;
 };
 
-type Image2 = {
-  id: number;
-  documentId: string;
-  name: string;
-  alternativeText: null;
-  caption: null;
-  width: number;
-  height: number;
-  formats: Formats2;
-  hash: string;
-  ext: string;
-  mime: string;
-  size: number;
-  url: string;
-  previewUrl: null;
-  provider: string;
-  provider_metadata: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-};
-
 type Formats2 = {
   large: Large;
   small: Large;
@@ -66,10 +44,10 @@ type Variant = {
   color: string;
   size: string;
   quantity: number;
-  images: Image[];
+  images: StrapiImageType[];
 };
 
-type Image = {
+export type StrapiImageType = {
   id: number;
   documentId: string;
   name: string;
