@@ -15,7 +15,7 @@ export const useVariantStore = create<VariantStore>()((set, get) => ({
   size: '',
   quantity: 1,
 
-  setColor: (variant) => set({ color: variant }),
+  setColor: (variant) => set({ color: variant, size: '', quantity: 1 }),
 
   setSize: (variant) => set({ size: variant }),
 
