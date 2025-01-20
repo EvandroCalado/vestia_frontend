@@ -8,6 +8,7 @@ type VariantStore = {
   setSize: (variant: string) => void;
   incQuantity: (maxInStock: number) => void;
   decQuantity: () => void;
+  reset: () => void;
 };
 
 export const useVariantStore = create<VariantStore>()((set, get) => ({
@@ -34,4 +35,6 @@ export const useVariantStore = create<VariantStore>()((set, get) => ({
 
     set({ quantity: quantity - 1 });
   },
+
+  reset: () => set({ color: '', size: '', quantity: 1 }),
 }));
