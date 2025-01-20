@@ -22,7 +22,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
       <ProductBreadCrumb />
 
       <div className='grid gap-8 md:mx-16 md:grid-cols-2 md:gap-16'>
-        <ProductSlide images={product?.variants[0].images} />
+        <ProductSlide variants={product.variants} />
         <ProductDetails {...product} />
       </div>
 
