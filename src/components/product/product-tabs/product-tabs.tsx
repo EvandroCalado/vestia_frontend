@@ -16,8 +16,8 @@ type ProductTabsProps = {
 
 export const ProductTabs = ({ description }: ProductTabsProps) => {
   return (
-    <Tabs className='grid grid-cols-6 gap-16' defaultValue='details'>
-      <TabsList className='flex flex-col items-start col-span-1 gap-4 py-16 h-max'>
+    <Tabs className='grid md:grid-cols-6 md:gap-16' defaultValue='details'>
+      <TabsList className='flex flex-row md:flex-col items-start col-span-1 gap-4 py-16 h-max'>
         <TabsTrigger value='details' asChild>
           <Button variant='ghost'>
             <MoreIcon /> Details

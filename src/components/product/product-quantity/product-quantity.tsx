@@ -16,6 +16,8 @@ export const ProductQuantity = ({ variants }: ProductQuantityProps) => {
 
   const { currentQuantity } = useVariants(variants);
 
+  console.log(currentQuantity);
+
   return (
     <div className='space-y-4 text-start'>
       <h5 className='font-normal uppercase text-muted-foreground'>quantity</h5>

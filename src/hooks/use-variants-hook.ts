@@ -2,7 +2,7 @@ import { Variant } from '@/components/product';
 import { useVariantStore } from '@/stores';
 
 export const useVariants = (variants: Variant[]) => {
-  const { color } = useVariantStore();
+  const { color, size } = useVariantStore();
 
   const uniqueVariants = Array.from(
     new Map(variants.map((variant) => [variant.title, variant])).values(),
@@ -20,9 +20,8 @@ export const useVariants = (variants: Variant[]) => {
 
   const currentQuantity =
     variants.find(
-      (variant) =>
-        variant.title === selectedColor && variant.size === currentVariant.size,
-    )?.quantity || 1;
+      (variant) => variant.title === selectedColor && variant.size === size,
+    )?.quantity || 0;
 
   return { uniqueVariants, currentVariant, currentSizes, currentQuantity };
 };
