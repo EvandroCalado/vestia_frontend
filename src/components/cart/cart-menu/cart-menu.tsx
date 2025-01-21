@@ -1,10 +1,12 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { MinusIcon, PlusIcon } from 'lucide-react';
 
 import {
   Button,
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
@@ -85,7 +87,11 @@ export const CartMenu = ({ cartItems }: CartMenuProps) => {
               <span>$97.00</span>
             </div>
 
-            <Button className='w-full'>View cart</Button>
+            <SheetClose asChild className='w-full'>
+              <Button className='w-full' asChild>
+                <Link href='/cart'>View cart</Link>
+              </Button>
+            </SheetClose>
           </div>
         </div>
       </SheetContent>
