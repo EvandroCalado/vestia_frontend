@@ -1,5 +1,7 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,7 +10,6 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui';
-import { usePathname } from 'next/navigation';
 
 export const ProductBreadCrumb = () => {
   const pathname = usePathname();

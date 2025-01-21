@@ -7,6 +7,12 @@ const meta: Meta = {
   component: ProductBreadCrumb,
   parameters: {
     layout: 'centered',
+    nextjs: {
+      appDirectory: true,
+      navigation: {
+        pathname: '/products/sweatshirt-with-hood-and-pocket',
+      },
+    },
   },
   tags: ['autodocs'],
 };
