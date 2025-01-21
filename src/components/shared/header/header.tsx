@@ -31,9 +31,7 @@ export const Header = () => {
       <PopUpHeader />
       <header className='container mx-auto flex items-center justify-between p-5'>
         <Logo />
-
         <Nav className='max-md:hidden' />
-
         <Search className='max-md:hidden' />
 
         <div className='flex items-center gap-4'>
