@@ -10,7 +10,7 @@ import {
   SheetTrigger,
 } from '@/components/ui';
 import { CartIcon } from '@/icons';
-import { Cart, CartItem } from '../cart-item';
+import { Cart, CartItems } from '../cart-items';
 
 type CartMenuProps = {
   items: Cart[];
@@ -28,7 +28,7 @@ export const CartMenu = ({ items }: CartMenuProps) => {
         </SheetHeader>
         <div className='flex h-full flex-col justify-between pb-12'>
           <div className='last-of-type:[&>div]:border-none'>
-            <CartItem items={items} onMenu />
+            <CartItems items={items} onMenu={true} />
           </div>
 
           <div className='space-y-4'>
