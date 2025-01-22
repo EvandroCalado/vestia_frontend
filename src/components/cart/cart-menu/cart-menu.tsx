@@ -1,7 +1,4 @@
-import Image from 'next/image';
 import Link from 'next/link';
-
-import { MinusIcon, PlusIcon } from 'lucide-react';
 
 import {
   Button,
@@ -12,23 +9,14 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui';
-import { CartIcon, CloseIcon } from '@/icons';
-import { currencyFormat } from '@/utils';
-
-type CartItems = {
-  id: number;
-  image: string;
-  title: string;
-  quantity: number;
-  price: number;
-  size: string;
-};
+import { CartIcon } from '@/icons';
+import { Cart, CartItem } from '../cart-item';
 
 type CartMenuProps = {
-  cartItems: CartItems[];
+  items: Cart[];
 };
 
-export const CartMenu = ({ cartItems }: CartMenuProps) => {
+export const CartMenu = ({ items }: CartMenuProps) => {
   return (
     <Sheet>
       <SheetTrigger>
@@ -40,45 +28,7 @@ export const CartMenu = ({ cartItems }: CartMenuProps) => {
         </SheetHeader>
         <div className='flex h-full flex-col justify-between pb-12'>
           <div className='last-of-type:[&>div]:border-none'>
-            {cartItems.map((cartItem) => (
-              <div
-                key={cartItem.id}
-                className='my-8 flex w-full gap-2 border-b'
-              >
-                <div className='relative'>
-                  <CloseIcon className='absolute left-0 top-0 cursor-pointer rounded-sm bg-gray-200 duration-150 hover:bg-gray-300' />
-                  <Image
-                    src={cartItem.image}
-                    alt={cartItem.title}
-                    width={70}
-                    height={70}
-                    priority
-                    sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-                    className='object-contain'
-                  />
-                </div>
-
-                <div className='space-y-4'>
-                  <h6 className='text-sm capitalize'>{cartItem.title}</h6>
-
-                  <div className='flex items-center gap-4'>
-                    <div className='flex w-max items-center gap-4 rounded-sm border'>
-                      <MinusIcon className='h-8 w-8 p-2' />
-                      <span>1</span>
-                      <PlusIcon className='h-8 w-8 p-2' />
-                    </div>
-
-                    <span className='text-sm'>
-                      {currencyFormat(cartItem.price)}
-                    </span>
-                  </div>
-                </div>
-
-                <p className='ml-auto text-sm font-semibold uppercase text-muted-foreground'>
-                  {cartItem.size}
-                </p>
-              </div>
-            ))}
+            <CartItem items={items} onMenu />
           </div>
 
           <div className='space-y-4'>

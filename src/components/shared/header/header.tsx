@@ -6,22 +6,24 @@ import { PopUpHeader } from '../pop-up-header';
 import { ProfileMenu } from '../profile-menu';
 import { Search } from '../search';
 
-const cartItems = [
+const items = [
   {
-    id: 400,
-    image: '/images/product1.png',
+    id: 1,
     title: 'raw black t-shirt lineup',
-    quantity: 2,
-    price: 75,
+    image: '/images/product1.png',
+    color: 'black',
     size: 'm',
+    price: 75,
+    quantity: 1,
   },
   {
-    id: 4001,
+    id: 2,
+    title: 'essential neutrals',
     image: '/images/product2.png',
-    title: 'Essential Neutrals',
-    quantity: 3,
-    price: 22,
+    color: 'white',
     size: 's',
+    price: 22,
+    quantity: 1,
   },
 ];
 
@@ -35,7 +37,7 @@ export const Header = () => {
         <Search className='max-md:hidden' />
 
         <div className='flex items-center gap-4'>
-          <CartMenu cartItems={cartItems} />
+          <CartMenu items={items} />
           <ProfileMenu />
           <Menu />
         </div>

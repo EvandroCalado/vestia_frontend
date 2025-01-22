@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { CartMenu } from '.';
+import { CartItem } from '.';
 
 const items = [
   {
@@ -24,11 +24,9 @@ const items = [
 ];
 
 const meta: Meta = {
-  title: 'Components/Cart/CartMenu',
-  component: CartMenu,
-  args: {
-    items,
-  },
+  title: 'Components/Cart/CartItem',
+  component: CartItem,
+  args: { items },
   parameters: {
     layout: 'centered',
   },
@@ -37,6 +35,12 @@ const meta: Meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof CartMenu>;
+type Story = StoryObj<typeof CartItem>;
 
 export const Default: Story = {};
+
+export const OnMenu: Story = {
+  args: {
+    onMenu: true,
+  },
+};
