@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { CartItem } from '.';
+import { CartItems } from '.';
 
 const items = [
   {
@@ -24,8 +24,8 @@ const items = [
 ];
 
 const meta: Meta = {
-  title: 'Components/Cart/CartItem',
-  component: CartItem,
+  title: 'Components/Cart/CartItems',
+  component: CartItems,
   args: { items },
   parameters: {
     layout: 'centered',
@@ -35,7 +35,7 @@ const meta: Meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof CartItem>;
+type Story = StoryObj<typeof CartItems>;
 
 export const Default: Story = {};
 

@@ -16,44 +16,51 @@ export type Cart = {
   quantity: number;
 };
 
-type CartItemProps = {
+type CartItemsProps = {
   items: Cart[];
   onMenu?: boolean;
 };
 
-export const CartItem = ({ items, onMenu = false }: CartItemProps) => {
+export const CartItems = ({ items, onMenu = false }: CartItemsProps) => {
   return (
     <>
       {items.map((item) => (
         <div
           key={item.id}
-          className={cn('relative grid grid-cols-6 gap-8', {
-            'flex gap-4': onMenu,
-          })}
+          className={cn('relative mb-4 grid grid-cols-6 gap-2 md:gap-4')}
         >
+          {/* image */}
           <Image
             src={item.image}
             alt={item.title}
             width={70}
             height={70}
             priority
+            className='min-w-12'
           />
 
           <div
-            className={cn('col-span-4 flex w-full', {
-              'flex-col space-y-4': onMenu,
-            })}
+            className={cn(
+              'col-span-4 flex w-full gap-2 max-md:col-span-5 max-md:flex-col',
+              {
+                'col-span-5 flex-col': onMenu,
+              },
+            )}
           >
+            {/* title and size */}
             <div
-              className={cn('col-span-2 w-full space-y-4', {
-                'flex items-center justify-between gap-4 space-y-0': onMenu,
-              })}
+              className={cn(
+                'col-span-2 flex w-full flex-col gap-2 max-md:flex-row max-md:justify-between',
+                {
+                  'flex-row justify-between': onMenu,
+                },
+              )}
             >
               <h6 className='font-medium capitalize'>{item.title}</h6>
               <div className='flex items-center gap-2 text-sm text-muted-foreground'>
                 <div className='capitalize'>
                   <span
-                    className={cn('', {
+                    className={cn('max-md:hidden', {
                       hidden: onMenu,
                     })}
                   >
@@ -63,7 +70,7 @@ export const CartItem = ({ items, onMenu = false }: CartItemProps) => {
                 </div>
                 <div>
                   <span
-                    className={cn('', {
+                    className={cn('max-md:hidden', {
                       hidden: onMenu,
                     })}
                   >
@@ -74,7 +81,8 @@ export const CartItem = ({ items, onMenu = false }: CartItemProps) => {
               </div>
             </div>
 
-            <div className='col-span-2 flex w-full gap-4'>
+            {/* price and quantity */}
+            <div className='col-span-6 flex w-full gap-4 md:col-span-2'>
               <span className='font-medium'>{currencyFormat(item.price)}</span>
 
               <div className='flex h-max w-max items-center gap-4 rounded-sm border'>
@@ -85,11 +93,12 @@ export const CartItem = ({ items, onMenu = false }: CartItemProps) => {
             </div>
           </div>
 
+          {/* close button */}
           <CloseIcon
             className={cn(
-              'cursor-pointer rounded-sm bg-gray-200 duration-150 hover:bg-gray-300',
+              'left-0 top-0 cursor-pointer rounded-sm bg-gray-200 duration-150 hover:bg-gray-300 max-lg:absolute',
               {
-                'absolute left-0 top-0': onMenu,
+                absolute: onMenu,
               },
             )}
           />
