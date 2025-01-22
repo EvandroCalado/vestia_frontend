@@ -18,6 +18,7 @@ export const getProductBySlugAction = async (slug: string) => {
 
     return productBySlugMapper(product);
   } catch (error) {
+    console.log(error);
     throw new Error('Internal server error.');
   }
 };

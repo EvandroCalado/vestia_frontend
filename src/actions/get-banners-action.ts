@@ -14,5 +14,6 @@ export const getBannersAction = async () => {
     return bannerMapper(banners);
   } catch (error) {
     console.error('Get banners action:', error);
+    throw new Error('Internal server error.');
   }
 };
