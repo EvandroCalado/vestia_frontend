@@ -13,6 +13,7 @@ export const productBySlugMapper = (product: StrapiProductBySlugType) => {
         color: item.color,
         size: item.size,
         quantity: item.quantity,
+        price: item.price,
         images: item.images.map((image) => image.formats.medium.url),
       };
     }),
