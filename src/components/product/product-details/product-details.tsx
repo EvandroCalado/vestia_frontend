@@ -11,6 +11,7 @@ export type Variant = {
   color: string;
   size: string;
   quantity: number;
+  price: number;
   images: string[];
 };
 
@@ -18,7 +19,6 @@ type ProductDetailsProps = {
   title: string;
   description: string;
   inStock: boolean;
-  price: number;
   variants: Variant[];
 };
 
@@ -27,7 +27,6 @@ const allSizes = ['s', 'm', 'x', 'xl', 'xxl'];
 export const ProductDetails = ({
   title,
   inStock,
-  price,
   variants,
 }: ProductDetailsProps) => {
   return (
@@ -35,11 +34,11 @@ export const ProductDetails = ({
       <h2 className='capitalize'>{title}</h2>
 
       <ProductRating score={2.5} numReviews={30} inStock={inStock} />
-      <ProductPrice price={price} />
+      <ProductPrice variants={variants} />
       <ProductColors variants={variants} />
       <ProductSizes variants={variants} allSizes={allSizes} />
       <ProductQuantity variants={variants} />
-      <ProductAddToCart />
+      <ProductAddToCart variants={variants} />
     </div>
   );
 };
