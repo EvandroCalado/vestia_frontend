@@ -34,6 +34,7 @@ type Variant = {
   color: string;
   size: string;
   quantity: number;
+  price: number;
   images: Image[];
 };
 
