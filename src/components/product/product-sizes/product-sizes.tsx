@@ -3,7 +3,6 @@
 import { useVariants } from '@/hooks';
 import { cn } from '@/lib/utils';
 import { useVariantStore } from '@/stores';
-
 import { Variant } from '../product-details';
 
 type ProductSizesProps = {
@@ -27,9 +26,9 @@ export const ProductSizes = ({ variants, allSizes }: ProductSizesProps) => {
             key={singleSize}
             disabled={!currentSizes.includes(singleSize)}
             className={cn(
-              'w-9 h-9 uppercase border-[1px] rounded-md border-gray-200 duration-150 hover:border-primary',
+              'h-9 w-9 rounded-md border-[1px] border-gray-200 uppercase duration-150 hover:border-primary',
               {
-                'disabled:opacity-30 hover:border-gray-200':
+                'hover:border-gray-200 disabled:opacity-30':
                   !currentSizes.includes(singleSize),
               },
               {
