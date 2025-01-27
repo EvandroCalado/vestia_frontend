@@ -1,9 +1,15 @@
+'use client';
+
+import { useVariants } from '@/hooks';
 import { currencyFormat } from '@/utils';
+import { Variant } from '../product-details';
 
 type ProductPriceProps = {
-  price: number;
+  variants: Variant[];
 };
 
-export const ProductPrice = ({ price }: ProductPriceProps) => {
-  return <h3>{currencyFormat(price)}</h3>;
+export const ProductPrice = ({ variants }: ProductPriceProps) => {
+  const { currentVariant } = useVariants(variants);
+
+  return <h3>{currencyFormat(currentVariant.price)}</h3>;
 };
