@@ -1,40 +1,57 @@
+'use client';
+
 import Link from 'next/link';
 
+import { Loading } from '@/components/shared';
 import {
   Button,
   Sheet,
   SheetClose,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui';
+import { useLoaded } from '@/hooks';
 import { CartIcon } from '@/icons';
-import { Cart, CartItems } from '../cart-items';
+import { useCartStore } from '@/stores';
+import { currencyFormat } from '@/utils';
+import { CartItems } from '../cart-items';
 
-type CartMenuProps = {
-  items: Cart[];
-};
+export const CartMenu = () => {
+  const loaded = useLoaded();
+  const { getSummaryInfo } = useCartStore();
+  const { total, totalProductsInCart } = getSummaryInfo();
 
-export const CartMenu = ({ items }: CartMenuProps) => {
+  if (!loaded) {
+    return <Loading />;
+  }
+
   return (
     <Sheet>
       <SheetTrigger>
-        <CartIcon />
+        <div className='relative'>
+          <CartIcon />
+          <span className='absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-primary p-1 text-xs text-white'>
+            {totalProductsInCart}
+          </span>
+        </div>
       </SheetTrigger>
       <SheetContent>
-        <SheetHeader>
-          <SheetTitle className='pb-4'>Shopping Cart</SheetTitle>
+        <SheetHeader className='pb-4'>
+          <SheetTitle>Shopping Cart</SheetTitle>
+          <SheetDescription>Items list</SheetDescription>
         </SheetHeader>
-        <div className='flex h-full flex-col justify-between pb-12'>
+        <div className='flex h-full flex-col justify-between pb-16'>
           <div className='last-of-type:[&>div]:border-none'>
-            <CartItems items={items} onMenu={true} />
+            <CartItems onMenu={true} />
           </div>
 
           <div className='space-y-4'>
             <div className='flex items-center justify-between text-sm'>
               <span>Total</span>
-              <span>$97.00</span>
+              <span>{currencyFormat(total)}</span>
             </div>
 
             <SheetClose asChild className='w-full'>
