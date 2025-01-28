@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 
 import {
@@ -8,15 +10,23 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui';
+import { useLoaded } from '@/hooks';
+import { useCartStore } from '@/stores';
 import { currencyFormat } from '@/utils';
+import { CartSummarySkeleton } from './cart-summary-skeleton';
 
-type CartSummaryProps = {
-  subtotal: number;
-  tax: number;
-  total: number;
-};
+export const CartSummary = () => {
+  const loaded = useLoaded();
+  const { getSummaryInfo } = useCartStore();
 
-export const CartSummary = ({ subtotal, tax, total }: CartSummaryProps) => {
+  const { subTotal, tax, total, totalProductsInCart } = getSummaryInfo();
+
+  if (!loaded) {
+    return <CartSummarySkeleton />;
+  }
+
+  if (totalProductsInCart === 0) return null;
+
   return (
     <Card className='w-full md:w-96'>
       <CardHeader>
@@ -26,7 +36,7 @@ export const CartSummary = ({ subtotal, tax, total }: CartSummaryProps) => {
       <CardContent className='mx-5 space-y-6 border-b px-0 text-lg'>
         <div className='flex items-center justify-between'>
           <span className='text-muted-foreground'>Subtotal:</span>
-          <span>{currencyFormat(subtotal)}</span>
+          <span>{currencyFormat(subTotal)}</span>
         </div>
 
         <div className='flex items-center justify-between'>
