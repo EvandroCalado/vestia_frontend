@@ -14,26 +14,26 @@ type ProductAddToCartProps = {
 
 export const ProductAddToCart = ({ variants }: ProductAddToCartProps) => {
   const { color, size, quantity, reset } = useVariantStore();
-  const { addProductToCart, cart } = useCartStore();
+  const { addProductToCart } = useCartStore();
   const { currentVariant } = useVariants(variants);
   const colorValidation = useValidationMessage(color, 'Please select a color.');
   const sizeValidation = useValidationMessage(size, 'Please select a size.');
-
-  console.log(cart);
 
   const handleAddToCart = () => {
     colorValidation.validate();
     sizeValidation.validate();
 
-    addProductToCart({
-      id: `${currentVariant.color}-${currentVariant.size}-${currentVariant.quantity}`,
-      title: currentVariant.title,
-      image: currentVariant.images[0],
-      color,
-      size,
-      price: currentVariant.price,
-      quantity,
-    });
+    if (color && size) {
+      addProductToCart({
+        id: `${currentVariant.color}-${currentVariant.size}-${currentVariant.quantity}`,
+        title: currentVariant.title,
+        image: currentVariant.images[0],
+        color,
+        size,
+        price: currentVariant.price,
+        quantity,
+      });
+    }
   };
 
   useEffect(() => {
