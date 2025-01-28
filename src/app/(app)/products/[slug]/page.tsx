@@ -1,3 +1,5 @@
+import { notFound } from 'next/navigation';
+
 import { getProductBySlugAction } from '@/actions';
 import {
   ProductBreadCrumb,
@@ -5,7 +7,6 @@ import {
   ProductSlide,
   ProductTabs,
 } from '@/components/product';
-import { notFound } from 'next/navigation';
 
 type ProductPageProps = {
   params: Promise<{ slug: string }>;
@@ -18,7 +19,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
   if (!product) notFound();
 
   return (
-    <div className='container p-5 mx-auto space-y-8'>
+    <div className='container mx-auto space-y-8 p-5'>
       <ProductBreadCrumb />
 
       <div className='grid gap-8 md:mx-16 md:grid-cols-2 md:gap-16'>
