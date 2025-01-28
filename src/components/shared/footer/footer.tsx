@@ -1,6 +1,6 @@
-import { AmexIcon, MasterCardIcon, VisaIcon } from '@/icons';
 import Link from 'next/link';
 
+import { AmexIcon, MasterCardIcon, VisaIcon } from '@/icons';
 import { Logo } from '../logo';
 
 const links = [
@@ -23,16 +23,16 @@ const links = [
 
 export const Footer = () => {
   return (
-    <footer className='container p-5 mx-auto mt-16'>
-      <div className='flex flex-col items-center justify-between gap-8 md:gap-16 md:flex-row'>
-        <div className='flex flex-col items-center w-full md:mb-auto md:items-start md:w-1/5'>
+    <footer className='container mx-auto p-5'>
+      <div className='flex flex-col items-center justify-between gap-8 md:flex-row md:gap-16'>
+        <div className='flex w-full flex-col items-center md:mb-auto md:w-1/5 md:items-start'>
           <Logo className='mb-6' />
-          <p className='text-sm text-center md:text-start text-muted-foreground'>
+          <p className='text-center text-sm text-muted-foreground md:text-start'>
             DevCut is a YouTube channel for practical project-based learning.
           </p>
         </div>
 
-        <div className='flex justify-between w-full gap-5 md:w-3/5 md:gap-6'>
+        <div className='flex w-full justify-between gap-5 md:w-3/5 md:gap-6'>
           {links.map((link) => (
             <div
               key={`${link.id}-${link.title}`}
@@ -53,7 +53,7 @@ export const Footer = () => {
           ))}
         </div>
 
-        <div className='flex flex-col items-center w-full md:mb-auto md:items-start md:w-1/5 text-muted-foreground'>
+        <div className='flex w-full flex-col items-center text-muted-foreground md:mb-auto md:w-1/5 md:items-start'>
           <p className='mb-6 font-light uppercase'>accepted payments</p>
 
           <div className='flex items-center gap-3'>
