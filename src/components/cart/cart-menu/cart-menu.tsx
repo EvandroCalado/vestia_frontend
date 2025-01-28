@@ -49,10 +49,14 @@ export const CartMenu = () => {
           </div>
 
           <div className='space-y-4'>
-            <div className='flex items-center justify-between text-sm'>
-              <span>Total</span>
-              <span>{currencyFormat(total)}</span>
-            </div>
+            {total > 0 && (
+              <div className='flex items-center justify-between'>
+                <span className='text-muted-foreground'>Total:</span>
+                <span className='text-muted-foreground'>
+                  {currencyFormat(total)}
+                </span>
+              </div>
+            )}
 
             <SheetClose asChild className='w-full'>
               <Button className='w-full' asChild>
