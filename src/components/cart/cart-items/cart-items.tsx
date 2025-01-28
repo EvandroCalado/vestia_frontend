@@ -2,12 +2,12 @@
 
 import Image from 'next/image';
 
-import { MinusIcon, PlusIcon } from 'lucide-react';
+import { MinusIcon, PackageOpen, PlusIcon } from 'lucide-react';
 
 import { useLoaded } from '@/hooks';
 import { CloseIcon } from '@/icons';
 import { cn } from '@/lib/utils';
-import { CartItem, useCartStore } from '@/stores';
+import { useCartStore } from '@/stores';
 import { currencyFormat } from '@/utils';
 import { CartItemsSkeleton } from './cart-items-skeleton';
 
@@ -17,17 +17,14 @@ type CartItemsProps = {
 
 export const CartItems = ({ onMenu = false }: CartItemsProps) => {
   const loaded = useLoaded();
-  const { cart, updateProductQuantity, removeProductFromCart } = useCartStore();
+  const {
+    cart,
+    removeProductFromCart,
+    increaseProductQuantity,
+    decreaseProductQuantity,
+  } = useCartStore();
 
-  const onValueChange = (
-    product: CartItem,
-    value: number,
-    quantity: number,
-  ) => {
-    if (quantity + value < 1 || quantity + value > 10) return;
-
-    updateProductQuantity(product, quantity + value);
-  };
+  console.log(cart);
 
   if (!loaded) {
     return (
@@ -40,8 +37,10 @@ export const CartItems = ({ onMenu = false }: CartItemsProps) => {
 
   if (cart?.length === 0) {
     return (
-      <div className='absolute inset-0 flex h-full w-full flex-col items-center justify-center'>
-        <h6 className='text-center font-medium'>Your cart is empty</h6>
+      <div className='absolute inset-0 -z-10 flex h-full w-full flex-col items-center justify-center gap-4'>
+        <h6 className='text-center text-xl font-medium'>Your cart is empty</h6>
+
+        <PackageOpen size={80} />
       </div>
     );
   }
@@ -110,11 +109,11 @@ export const CartItems = ({ onMenu = false }: CartItemsProps) => {
               <span className='font-medium'>{currencyFormat(item.price)}</span>
 
               <div className='flex h-max w-max items-center gap-4 rounded-sm border'>
-                <button onClick={() => onValueChange(item, -1, item.quantity)}>
+                <button onClick={() => decreaseProductQuantity(item)}>
                   <MinusIcon className='h-8 w-8 p-2' />
                 </button>
                 <span>{item.quantity}</span>
-                <button onClick={() => onValueChange(item, 1, item.quantity)}>
+                <button onClick={() => increaseProductQuantity(item)}>
                   <PlusIcon className='h-8 w-8 p-2' />
                 </button>
               </div>
