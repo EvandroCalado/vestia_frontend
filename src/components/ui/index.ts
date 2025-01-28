@@ -6,6 +6,7 @@ export * from './card';
 export * from './carousel';
 export * from './input';
 export * from './label';
+export * from './separator';
 export * from './sheet';
 export * from './tabs';
 export * from './tooltip';
