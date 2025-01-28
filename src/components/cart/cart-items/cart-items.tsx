@@ -1,33 +1,57 @@
+'use client';
+
 import Image from 'next/image';
 
 import { MinusIcon, PlusIcon } from 'lucide-react';
 
+import { useLoaded } from '@/hooks';
 import { CloseIcon } from '@/icons';
 import { cn } from '@/lib/utils';
+import { CartItem, useCartStore } from '@/stores';
 import { currencyFormat } from '@/utils';
-
-export type Cart = {
-  id: number;
-  title: string;
-  image: string;
-  color: string;
-  size: string;
-  price: number;
-  quantity: number;
-};
+import { CartItemsSkeleton } from './cart-items-skeleton';
 
 type CartItemsProps = {
-  items: Cart[];
   onMenu?: boolean;
 };
 
-export const CartItems = ({ items, onMenu = false }: CartItemsProps) => {
+export const CartItems = ({ onMenu = false }: CartItemsProps) => {
+  const loaded = useLoaded();
+  const { cart, updateProductQuantity, removeProductFromCart } = useCartStore();
+
+  const onValueChange = (
+    product: CartItem,
+    value: number,
+    quantity: number,
+  ) => {
+    if (quantity + value < 1 || quantity + value > 10) return;
+
+    updateProductQuantity(product, quantity + value);
+  };
+
+  if (!loaded) {
+    return (
+      <div>
+        <CartItemsSkeleton />
+        <CartItemsSkeleton />
+      </div>
+    );
+  }
+
+  if (cart?.length === 0) {
+    return (
+      <div className='absolute inset-0 flex h-full w-full flex-col items-center justify-center'>
+        <h6 className='text-center font-medium'>Your cart is empty</h6>
+      </div>
+    );
+  }
+
   return (
     <>
-      {items.map((item) => (
+      {cart?.map((item) => (
         <div
           key={item.id}
-          className={cn('relative mb-4 grid grid-cols-6 gap-2 md:gap-4')}
+          className={cn('relative mb-8 grid grid-cols-6 gap-2 md:gap-4')}
         >
           {/* image */}
           <Image
@@ -86,22 +110,28 @@ export const CartItems = ({ items, onMenu = false }: CartItemsProps) => {
               <span className='font-medium'>{currencyFormat(item.price)}</span>
 
               <div className='flex h-max w-max items-center gap-4 rounded-sm border'>
-                <MinusIcon className='h-8 w-8 p-2' />
+                <button onClick={() => onValueChange(item, -1, item.quantity)}>
+                  <MinusIcon className='h-8 w-8 p-2' />
+                </button>
                 <span>{item.quantity}</span>
-                <PlusIcon className='h-8 w-8 p-2' />
+                <button onClick={() => onValueChange(item, 1, item.quantity)}>
+                  <PlusIcon className='h-8 w-8 p-2' />
+                </button>
               </div>
             </div>
           </div>
 
           {/* close button */}
-          <CloseIcon
-            className={cn(
-              'left-0 top-0 cursor-pointer rounded-sm bg-gray-200 duration-150 hover:bg-gray-300 max-lg:absolute',
-              {
-                absolute: onMenu,
-              },
-            )}
-          />
+          <button onClick={() => removeProductFromCart(item)}>
+            <CloseIcon
+              className={cn(
+                'left-0 top-0 cursor-pointer rounded-sm bg-gray-200 duration-150 hover:bg-gray-300 max-lg:absolute',
+                {
+                  absolute: onMenu,
+                },
+              )}
+            />
+          </button>
         </div>
       ))}
     </>
