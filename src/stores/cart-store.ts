@@ -23,7 +23,8 @@ type CartStore = {
   getTotalProductsInCart: () => number;
   getSummaryInfo: () => SummaryInfo;
   addProductToCart: (cartItem: CartItem) => void;
-  updateProductQuantity: (cartItem: CartItem, quantity: number) => void;
+  increaseProductQuantity: (cartItem: CartItem) => void;
+  decreaseProductQuantity: (cartItem: CartItem) => void;
   removeProductFromCart: (cartItem: CartItem) => void;
 };
 
@@ -78,18 +79,33 @@ export const useCartStore = create<CartStore>()(
         set({ cart: newCart });
       },
 
-      updateProductQuantity: (cartItem, quantity) => {
+      increaseProductQuantity: (cartItem) => {
         const { cart } = get();
 
         const newCart = cart.map((item) => {
-          if (item.id === cartItem.id && item.size === cartItem.size) {
+          if (item.id === cartItem.id) {
             return {
               ...item,
-              quantity,
+              quantity: item.quantity + 1,
             };
           }
+          return item;
+        });
 
-          return cartItem;
+        set({ cart: newCart });
+      },
+
+      decreaseProductQuantity: (cartItem) => {
+        const { cart } = get();
+
+        const newCart = cart.map((item) => {
+          if (item.id === cartItem.id && item.quantity > 1) {
+            return {
+              ...item,
+              quantity: item.quantity - 1,
+            };
+          }
+          return item;
         });
 
         set({ cart: newCart });
