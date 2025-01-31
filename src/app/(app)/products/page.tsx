@@ -7,7 +7,7 @@ const ProductsPage = () => {
     <div className='container mx-auto space-y-8 p-5'>
       <Breadcrumb />
 
-      <div className='flex w-full gap-8'>
+      <div className='flex w-full justify-center gap-8'>
         <ProductsFilter />
         <ProductsGrid products={productList} />
       </div>

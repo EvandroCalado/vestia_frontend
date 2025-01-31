@@ -55,7 +55,7 @@ const variants = [
 
 export const ProductsFilter = () => {
   return (
-    <div className='w-56 space-y-8 rounded-lg border px-5 py-7'>
+    <div className='hidden w-60 space-y-8 rounded-lg border px-5 py-7 md:block'>
       {/* categories */}
       <div className='space-y-4 border-b border-zinc-200 pb-10'>
         <h5 className='mb-6 font-medium capitalize'>categories</h5>
