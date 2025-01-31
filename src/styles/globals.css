@@ -3,23 +3,25 @@
 @tailwind utilities;
 
 @layer base {
-  * {
+  *,
+  ::after,
+  ::before {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-primary;
+    @apply bg-background font-primary text-foreground;
   }
   h1 {
-    @apply text-[32px] md:text-[40px] font-semibold;
+    @apply text-[32px] font-semibold md:text-[40px];
   }
   h2 {
-    @apply text-[24px] md:text-[32px] font-semibold;
+    @apply text-[24px] font-semibold md:text-[32px];
   }
   h3 {
-    @apply text-[18px] md:text-[24px] font-semibold;
+    @apply text-[18px] font-semibold md:text-[24px];
   }
   h4 {
-    @apply text-[16px] md:text-[18px] font-semibold;
+    @apply text-[16px] font-semibold md:text-[18px];
   }
   h5 {
     @apply text-[16px] font-semibold;
