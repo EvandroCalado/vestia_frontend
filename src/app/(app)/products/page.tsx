@@ -1,4 +1,8 @@
-import { ProductsFilter, ProductsGrid } from '@/components/products';
+import {
+  ProductsFilter,
+  ProductsGrid,
+  ProductsPagination,
+} from '@/components/products';
 import { Breadcrumb } from '@/components/shared';
 import { productList } from '@/utils';
 
@@ -11,6 +15,8 @@ const ProductsPage = () => {
         <ProductsFilter />
         <ProductsGrid products={productList} />
       </div>
+
+      <ProductsPagination />
     </div>
   );
 };
