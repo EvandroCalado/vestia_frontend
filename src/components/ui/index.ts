@@ -7,6 +7,7 @@ export * from './carousel';
 export * from './checkbox';
 export * from './input';
 export * from './label';
+export * from './pagination';
 export * from './select';
 export * from './separator';
 export * from './sheet';
