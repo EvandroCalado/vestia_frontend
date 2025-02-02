@@ -1,4 +1,5 @@
 export * from './forgot-password-action';
+export * from './get-all-products-action';
 export * from './get-auth-token-action';
 export * from './get-banners-action';
 export * from './get-best-selling-products-action';
