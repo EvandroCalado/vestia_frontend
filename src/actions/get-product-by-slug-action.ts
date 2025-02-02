@@ -13,7 +13,7 @@ export const getProductBySlugAction = async (slug: string) => {
     const product: StrapiProductBySlugType = await response.json();
 
     if (!response.ok) {
-      throw new Error('Product not fond.');
+      throw new Error('Product not found.');
     }
 
     return productBySlugMapper(product);
