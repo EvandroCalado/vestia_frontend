@@ -1,14 +1,10 @@
 'use client';
 
 import { useActionState } from 'react';
-
-import { loginUserAction } from '@/actions';
-import { GoogleIcon } from '@/icons';
-import { cn, STRAPI_URL } from '@/lib/utils';
-import { Label } from '@radix-ui/react-label';
 import Link from 'next/link';
 
-import { Logo } from '../../shared';
+import { loginUserAction } from '@/actions';
+import { Logo } from '@/components/shared';
 import {
   Button,
   Card,
@@ -18,7 +14,10 @@ import {
   CardHeader,
   CardTitle,
   Input,
-} from '../../ui';
+  Label,
+} from '@/components/ui';
+import { GoogleIcon } from '@/icons';
+import { cn, STRAPI_URL } from '@/lib/utils';
 import { StrapiErrors } from '../strapi-errors/strapi-errors';
 import { ZodErrors } from '../zod-errors/zod-errors';
 
@@ -30,13 +29,13 @@ export const SignInForm = ({
 
   return (
     <div
-      className={cn('flex flex-col gap-3 p-5 max-w-sm', className)}
+      className={cn('flex max-w-sm flex-col gap-3 p-5', className)}
       {...props}
     >
       <Card>
         <CardHeader className='flex flex-col items-center'>
           <Logo />
-          <CardTitle className='text-xl text-center py-4'>Sign In</CardTitle>
+          <CardTitle className='py-4 text-center text-xl'>Sign In</CardTitle>
           <CardDescription>
             Enter your details to sign in to your account
           </CardDescription>
@@ -69,7 +68,7 @@ export const SignInForm = ({
                 <ZodErrors error={state?.zodErrors?.password} />
               </div>
 
-              <div className='text-sm text-end text-muted-foreground'>
+              <div className='text-end text-sm text-muted-foreground'>
                 <Link
                   href='/forgot-password'
                   className='underline underline-offset-4 hover:text-primary'
@@ -94,7 +93,7 @@ export const SignInForm = ({
           <StrapiErrors error={state?.strapiErrors} />
         </CardFooter>
       </Card>
-      <div className='text-sm text-center text-muted-foreground'>
+      <div className='text-center text-sm text-muted-foreground'>
         Don&apos;t have an account?{' '}
         <Link
           href='/signup'
