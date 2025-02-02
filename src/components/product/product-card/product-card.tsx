@@ -9,19 +9,15 @@ import {
   CardHeader,
 } from '@/components/ui';
 import { Product } from '@/types';
-import { currencyFormat } from '@/utils';
+import { ProductCardPrice } from '../product-card-price';
 
 export type ProductCardProps = {
   product: Product;
 };
 
 export const ProductCard = ({ product }: ProductCardProps) => {
-  const prices = product.variants.map((variant) => variant.price);
-  const minValue = Math.min(...prices);
-  const maxValue = Math.max(...prices);
-
   return (
-    <Card className='max-w-[350px] overflow-hidden'>
+    <Card className='max-w-[320px] overflow-hidden'>
       <Link href={`/products/${product.slug}`} className='group'>
         <CardHeader className='overflow-hidden p-0'>
           <Image
@@ -44,9 +40,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           >
             {true ? 'in stock' : 'out of stock'}
           </Badge>
-          <p className='text-muted-foreground'>
-            {currencyFormat(minValue)}-{currencyFormat(maxValue)}
-          </p>
+
+          <ProductCardPrice variants={product.variants} />
         </CardFooter>
       </Link>
     </Card>
