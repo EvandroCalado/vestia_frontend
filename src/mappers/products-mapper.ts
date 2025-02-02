@@ -1,3 +1,5 @@
+import { Product } from '@/types';
+
 type StrapiImage = {
   formats: {
     small: {
@@ -38,26 +40,6 @@ type StrapiPagination = {
 type StrapiProducts = {
   data: StrapiProduct[];
   meta: StrapiPagination;
-};
-
-export type Variant = {
-  id: number;
-  title: string;
-  color: string;
-  size: string;
-  quantity: number;
-  price: number;
-  images: string[];
-};
-
-export type Product = {
-  id: number;
-  title: string;
-  slug: string;
-  description: string;
-  isBestSelling: boolean;
-  categories: string;
-  variants: Variant[];
 };
 
 type Return = {
