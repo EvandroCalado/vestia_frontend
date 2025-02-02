@@ -1,9 +1,11 @@
 'use server';
 
-import { loginUserService } from '@/services';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+
 import { z } from 'zod';
+
+import { loginUserService } from '@/services';
 
 const loginSchema = z.object({
   identifier: z
