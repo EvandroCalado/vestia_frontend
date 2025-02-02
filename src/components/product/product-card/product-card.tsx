@@ -8,7 +8,7 @@ import {
   CardFooter,
   CardHeader,
 } from '@/components/ui';
-import { Product } from '@/mappers';
+import { Product } from '@/types';
 import { currencyFormat } from '@/utils';
 
 export type ProductCardProps = {
@@ -16,6 +16,10 @@ export type ProductCardProps = {
 };
 
 export const ProductCard = ({ product }: ProductCardProps) => {
+  const prices = product.variants.map((variant) => variant.price);
+  const minValue = Math.min(...prices);
+  const maxValue = Math.max(...prices);
+
   return (
     <Card className='max-w-[350px] overflow-hidden'>
       <Link href={`/products/${product.slug}`} className='group'>
@@ -31,17 +35,17 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           />
         </CardHeader>
         <CardContent>
-          <h6 className='font-medium capitalize'>{product.title}</h6>
+          <h6 className='truncate font-medium capitalize'>{product.title}</h6>
         </CardContent>
-        <CardFooter className='flex items-center justify-between'>
+        <CardFooter className='flex items-center justify-between text-sm'>
           <Badge
-            className='rounded-full uppercase'
+            className='rounded-full text-[10px] uppercase lg:text-xs'
             variant={true ? 'outline' : 'destructive'}
           >
             {true ? 'in stock' : 'out of stock'}
           </Badge>
           <p className='text-muted-foreground'>
-            {currencyFormat(product.variants[0].price)}
+            {currencyFormat(minValue)}-{currencyFormat(maxValue)}
           </p>
         </CardFooter>
       </Link>
