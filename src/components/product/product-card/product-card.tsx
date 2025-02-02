@@ -1,3 +1,6 @@
+import Image from 'next/image';
+import Link from 'next/link';
+
 import {
   Badge,
   Card,
@@ -5,50 +8,41 @@ import {
   CardFooter,
   CardHeader,
 } from '@/components/ui';
-import Image from 'next/image';
-import Link from 'next/link';
+import { Product } from '@/mappers';
+import { currencyFormat } from '@/utils';
 
 export type ProductCardProps = {
-  id: number;
-  image: string;
-  title: string;
-  slug: string;
-  inStock: boolean;
-  price: number;
+  product: Product;
 };
 
-export const ProductCard = ({
-  image,
-  title,
-  slug,
-  inStock,
-  price,
-}: ProductCardProps) => {
+export const ProductCard = ({ product }: ProductCardProps) => {
   return (
-    <Card className='overflow-hidden'>
-      <Link href={`/products/${slug}`} className='group'>
-        <CardHeader className='p-0 overflow-hidden'>
+    <Card className='max-w-[350px] overflow-hidden'>
+      <Link href={`/products/${product.slug}`} className='group'>
+        <CardHeader className='overflow-hidden p-0'>
           <Image
-            src={image}
-            alt={title}
+            src={product.variants[0].images[0]}
+            alt={product.title}
             width={200}
             height={300}
             priority
             sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-            className='object-contain w-auto duration-300 rounded-tl-xl rounded-tr-xl group-hover:scale-105'
+            className='w-auto rounded-tl-xl rounded-tr-xl object-contain duration-300 group-hover:scale-105'
           />
         </CardHeader>
         <CardContent>
-          <h5 className='font-normal capitalize'>{title}</h5>
+          <h6 className='font-medium capitalize'>{product.title}</h6>
         </CardContent>
         <CardFooter className='flex items-center justify-between'>
           <Badge
-            className='uppercase rounded-full'
-            variant={inStock ? 'outline' : 'destructive'}
+            className='rounded-full uppercase'
+            variant={true ? 'outline' : 'destructive'}
           >
-            {inStock ? 'in stock' : 'out of stock'}
+            {true ? 'in stock' : 'out of stock'}
           </Badge>
-          <p className='text-muted-foreground'>${price.toFixed(2)}</p>
+          <p className='text-muted-foreground'>
+            {currencyFormat(product.variants[0].price)}
+          </p>
         </CardFooter>
       </Link>
     </Card>
