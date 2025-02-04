@@ -1,5 +1,5 @@
-import { Checkbox, Slider } from '@/components/ui';
-import { currencyFormat } from '@/utils';
+import { Button, Checkbox } from '@/components/ui';
+import { ProductsFilterPrice } from '../products-filter-price';
 
 const categories = [
   'shirts',
@@ -10,59 +10,48 @@ const categories = [
   'accessories',
 ];
 
-const variants = [
-  {
-    id: 143,
-    title: 'blue',
-    color: '#3a5f81',
-    size: 'x',
-    images: [
-      'https://res.cloudinary.com/dnhsdenji/image/upload/v1737074811/large_1_3908be57a4.webp',
-    ],
-  },
-  {
-    id: 144,
-    title: 'green',
-    color: '#74705e',
-    size: 'x',
-    images: [
-      'https://res.cloudinary.com/dnhsdenji/image/upload/v1737075014/large_5_6616ce92bb.webp',
-    ],
-  },
-  {
-    id: 146,
-    title: 'black',
-    color: '#1f2028',
-    size: 's',
-    quantity: 2,
-    price: 90,
-    images: [
-      'https://res.cloudinary.com/dnhsdenji/image/upload/v1737075339/large_1_73ac0e92d1.webp',
-    ],
-  },
-  {
-    id: 151,
-    title: 'white',
-    color: '#dfe1e5',
-    size: 's',
-    quantity: 5,
-    price: 85,
-    images: [
-      'https://res.cloudinary.com/dnhsdenji/image/upload/v1737074057/large_1_bf3d8788ba.webp',
-    ],
-  },
+const sizes = ['s', 'm', 'x', 'xl', 'xxl'];
+
+const colors = [
+  { title: 'red', color: '#FF0000' },
+  { title: 'blue', color: '#0000FF' },
+  { title: 'green', color: '#008000' },
+  { title: 'yellow', color: '#FFFF00' },
+  { title: 'orange', color: '#FFA500' },
+  { title: 'purple', color: '#800080' },
+  { title: 'pink', color: '#FFC0CB' },
+  { title: 'brown', color: '#A52A2A' },
+  { title: 'black', color: '#000000' },
+  { title: 'white', color: '#DFE1E5' },
+  { title: 'gray', color: '#808080' },
 ];
 
-export const ProductsFilter = () => {
+type ProductsFilterProps = {
+  params: { [key: string]: string | string[] | undefined };
+};
+
+export const ProductsFilter = ({ params }: ProductsFilterProps) => {
   return (
-    <div className='hidden h-max w-60 space-y-8 rounded-lg border px-5 py-7 md:block'>
+    <form
+      action='/products'
+      className='hidden h-max w-72 space-y-8 rounded-lg border px-5 py-7 md:block'
+    >
       {/* categories */}
-      <div className='space-y-4 border-b border-zinc-200 pb-10'>
+      <div className='w-full space-y-4 border-b border-zinc-200 pb-10'>
         <h5 className='mb-6 font-medium capitalize'>categories</h5>
 
         {categories.map((category) => (
           <div key={category} className='flex items-center gap-2'>
-            <Checkbox id={category} />
+            <Checkbox
+              id={category}
+              name='categories'
+              value={category || params.categories}
+              defaultChecked={
+                category === params.categories ||
+                (Array.isArray(params.categories) &&
+                  params.categories.includes(category))
+              }
+            />
             <label
               htmlFor={category}
               className='cursor-pointer text-sm capitalize leading-none text-zinc-500'
@@ -77,12 +66,17 @@ export const ProductsFilter = () => {
       <div className='border-b border-zinc-200 pb-10'>
         <h5 className='mb-6 font-medium capitalize'>colors</h5>
 
-        <div className='flex items-center gap-4'>
-          {variants.map((variant) => (
-            <button
-              key={variant.id}
-              style={{ background: variant.color }}
-              className='h-6 w-6 rounded-full ring-[1px] ring-zinc-300 ring-offset-[3px]'
+        <div className='flex flex-wrap items-center gap-4'>
+          {colors.map((color) => (
+            <input
+              key={color.title}
+              type='radio'
+              name='color'
+              radioGroup='color'
+              value={color.title}
+              defaultChecked={color.title === params.color}
+              style={{ backgroundColor: color.color }}
+              className={`h-6 w-6 cursor-pointer appearance-none rounded-full border-2 border-transparent checked:ring-[1px] checked:ring-black checked:ring-offset-2 focus:outline-none`}
             />
           ))}
         </div>
@@ -93,29 +87,30 @@ export const ProductsFilter = () => {
         <h5 className='mb-6 font-medium capitalize'>sizes</h5>
 
         <div className='flex flex-wrap items-center gap-4'>
-          {variants.map((variant) => (
-            <button
-              key={variant.id}
-              className='rounded border px-4 py-2 text-sm uppercase'
-            >
-              {variant.size}
-            </button>
+          {sizes.map((size) => (
+            <div key={size} className='relative h-10 w-10'>
+              <input
+                type='radio'
+                name='size'
+                radioGroup='size'
+                value={size}
+                defaultChecked={size === params.size}
+                className={`h-10 w-10 cursor-pointer appearance-none rounded border checked:border-black checked:ring-offset-2 focus:outline-none`}
+              />
+              <span className='pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
+                {size}
+              </span>
+            </div>
           ))}
         </div>
       </div>
 
       {/* price */}
-      <div>
-        <h5 className='mb-6 font-medium capitalize'>price</h5>
+      <ProductsFilterPrice paramPrice={params.price} />
 
-        <div className='space-y-2'>
-          <Slider defaultValue={[0]} max={100} step={1} />
-          <div className='flex items-center justify-between'>
-            <span>{currencyFormat(0)}</span>
-            <span>{currencyFormat(100)}</span>
-          </div>
-        </div>
-      </div>
-    </div>
+      <Button className='w-full' type='submit'>
+        Apply
+      </Button>
+    </form>
   );
 };
