@@ -26,13 +26,13 @@ export const ProductsCleanFilter = () => {
 
     newSearchParams.delete(param);
 
-    const updatedCategories = searchParams
+    const updatedParams = searchParams
       .getAll(param)
       .filter((param) => param !== paramToRemove);
 
-    updatedCategories.forEach((param) => {
-      if (param) {
-        newSearchParams.append(param, param);
+    updatedParams.forEach((update) => {
+      if (update) {
+        newSearchParams.append(param, update);
       }
     });
 
