@@ -1,6 +1,7 @@
 export * from './product-add-to-cart';
 export * from './product-bread-crumb';
 export * from './product-card';
+export * from './product-card-price';
 export * from './product-colors';
 export * from './product-details';
 export * from './product-price';
