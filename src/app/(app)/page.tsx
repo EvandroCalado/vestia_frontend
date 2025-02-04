@@ -1,12 +1,7 @@
 import { notFound } from 'next/navigation';
 
 import { getBannersAction } from '@/actions';
-import {
-  BestSelling,
-  FeaturedAndLatest,
-  Hero,
-  Services,
-} from '@/components/home';
+import { Hero, Services } from '@/components/home';
 
 export const HomePage = async () => {
   const banners = await getBannersAction();
@@ -17,9 +12,9 @@ export const HomePage = async () => {
     <div className='flex h-full flex-col items-center justify-center space-y-8'>
       <Hero {...banners[0]} />
       <Services />
-      <BestSelling />
+      {/* <BestSelling /> */}
       <Hero {...banners[1]} />
-      <FeaturedAndLatest />
+      {/* <FeaturedAndLatest /> */}
     </div>
   );
 };
