@@ -1,14 +1,6 @@
-import { Button, Checkbox } from '@/components/ui';
+import { Button } from '@/components/ui';
+import { ProductsCategoriesFilter } from '../products-categories-filter';
 import { ProductsFilterPrice } from '../products-filter-price';
-
-const categories = [
-  'shirts',
-  'pants',
-  'jackets',
-  'shorts',
-  'activewear',
-  'accessories',
-];
 
 const sizes = ['s', 'm', 'x', 'xl', 'xxl'];
 
@@ -36,31 +28,7 @@ export const ProductsFilter = ({ params }: ProductsFilterProps) => {
       action='/products'
       className='hidden h-max w-72 space-y-8 rounded-lg border px-5 py-7 md:block'
     >
-      {/* categories */}
-      <div className='w-full space-y-4 border-b border-zinc-200 pb-10'>
-        <h5 className='mb-6 font-medium capitalize'>categories</h5>
-
-        {categories.map((category) => (
-          <div key={category} className='flex items-center gap-2'>
-            <Checkbox
-              id={category}
-              name='categories'
-              value={category || params.categories}
-              defaultChecked={
-                category === params.categories ||
-                (Array.isArray(params.categories) &&
-                  params.categories.includes(category))
-              }
-            />
-            <label
-              htmlFor={category}
-              className='cursor-pointer text-sm capitalize leading-none text-zinc-500'
-            >
-              {category}
-            </label>
-          </div>
-        ))}
-      </div>
+      <ProductsCategoriesFilter />
 
       {/* colors */}
       <div className='border-b border-zinc-200 pb-10'>
