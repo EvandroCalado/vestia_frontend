@@ -26,7 +26,7 @@ const ProductsPage = async ({ searchParams }: ProductsPageProps) => {
 
       <div className='flex w-full justify-center gap-8'>
         <ProductsFilter params={params} />
-        <ProductsGrid products={products} params={params} />
+        <ProductsGrid products={products} />
       </div>
 
       <ProductsPagination />
