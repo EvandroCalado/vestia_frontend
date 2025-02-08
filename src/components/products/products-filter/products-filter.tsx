@@ -4,11 +4,7 @@ import { ProductsColorsFilter } from '../products-colors-filter';
 import { ProductsPriceFilter } from '../products-price-filter';
 import { ProductsSizesFilter } from '../products-sizes-filter';
 
-type ProductsFilterProps = {
-  params: { [key: string]: string | string[] | undefined };
-};
-
-export const ProductsFilter = ({ params }: ProductsFilterProps) => {
+export const ProductsFilter = () => {
   return (
     <form
       action='/products'
@@ -17,7 +13,7 @@ export const ProductsFilter = ({ params }: ProductsFilterProps) => {
       <ProductsCategoriesFilter />
       <ProductsColorsFilter />
       <ProductsSizesFilter />
-      <ProductsPriceFilter paramPrice={params.price} />
+      <ProductsPriceFilter />
 
       <Button className='w-full' type='submit'>
         Apply
