@@ -9,7 +9,7 @@ type ProductsFilterPrice = {
   paramPrice: string | string[] | undefined;
 };
 
-export const ProductsFilterPrice = ({ paramPrice }: ProductsFilterPrice) => {
+export const ProductsPriceFilter = ({ paramPrice }: ProductsFilterPrice) => {
   const [price, setPrice] = useState<number | null>(Number(paramPrice) || 0);
 
   return (

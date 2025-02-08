@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui';
 import { ProductsCategoriesFilter } from '../products-categories-filter';
-import { ProductsFilterPrice } from '../products-filter-price';
+import { ProductsPriceFilter } from '../products-price-filter';
 
 const sizes = ['s', 'm', 'x', 'xl', 'xxl'];
 
@@ -74,7 +74,7 @@ export const ProductsFilter = ({ params }: ProductsFilterProps) => {
       </div>
 
       {/* price */}
-      <ProductsFilterPrice paramPrice={params.price} />
+      <ProductsPriceFilter paramPrice={params.price} />
 
       <Button className='w-full' type='submit'>
         Apply
