@@ -35,8 +35,8 @@ export const ProductsColorsFilter = () => {
   };
 
   return (
-    <div className='border-b border-zinc-200 pb-10'>
-      <h5 className='mb-6 font-medium capitalize'>colors</h5>
+    <div className='border-zinc-200 pb-5 md:mb-5 md:border-b'>
+      <h5 className='mb-2 font-medium capitalize md:mb-6'>colors</h5>
 
       <div className='flex flex-wrap items-center gap-4'>
         {colors.map((item) => (

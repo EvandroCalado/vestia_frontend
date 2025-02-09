@@ -36,11 +36,15 @@ export const ProductsCleanFilter = () => {
       }
     });
 
+    if (newSearchParams.get('price') === '0') {
+      newSearchParams.delete('price');
+    }
+
     router.push(`${pathName}?${newSearchParams.toString()}`);
   };
 
   return (
-    <div className='mb-6 space-y-6'>
+    <div className='mb-6 mt-6 space-y-6 md:mt-0'>
       <h6 className='font-semibold'>Applied Filters:</h6>
 
       <div className='flex flex-wrap items-center gap-4'>

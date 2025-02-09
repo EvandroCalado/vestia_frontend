@@ -16,7 +16,7 @@ export const ProductsPriceFilter = () => {
 
   return (
     <div>
-      <h5 className='mb-6 font-medium capitalize'>price</h5>
+      <h5 className='mb-2 font-medium capitalize md:mb-6'>price</h5>
 
       <div className='space-y-2'>
         <input

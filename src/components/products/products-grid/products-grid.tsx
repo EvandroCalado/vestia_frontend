@@ -42,7 +42,7 @@ export const ProductsGrid = ({ products }: ProductsGridProps) => {
   }
 
   return (
-    <div>
+    <div className='mt-16 md:mt-0'>
       <ProductsCleanFilter />
 
       <div className='flex items-center justify-between text-zinc-400'>

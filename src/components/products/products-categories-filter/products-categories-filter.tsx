@@ -32,8 +32,8 @@ export const ProductsCategoriesFilter = () => {
   };
 
   return (
-    <div className='w-full space-y-4 border-b border-zinc-200 pb-10'>
-      <h5 className='mb-6 font-medium capitalize'>categories</h5>
+    <div className='w-full space-y-4 border-zinc-200 pb-5 md:mb-5 md:border-b'>
+      <h5 className='mb-2 font-medium capitalize md:mb-6'>categories</h5>
 
       {categories.map((category) => (
         <div key={category} className='flex items-center gap-2'>
