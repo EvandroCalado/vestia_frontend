@@ -9,7 +9,6 @@ import {
 import { Breadcrumb } from '@/components/shared';
 
 type ProductsPageProps = {
-  // params: Promise<{ slug: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
@@ -25,7 +24,7 @@ const ProductsPage = async ({ searchParams }: ProductsPageProps) => {
       <Breadcrumb />
 
       <div className='flex w-full justify-center gap-8'>
-        <ProductsFilter params={params} />
+        <ProductsFilter />
         <ProductsGrid products={products} />
       </div>
 

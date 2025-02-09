@@ -80,17 +80,18 @@ export const ProductsCleanFilter = () => {
           </Button>
         ))}
 
-        {paramPrice.map((price) => (
-          <Button
-            key={price}
-            variant='outline'
-            className='rounded-full capitalize'
-            onClick={() => handleRemoveParam(price, 'price')}
-          >
-            Price: {price}
-            <X />
-          </Button>
-        ))}
+        {Number(paramPrice[0]) > 0 &&
+          paramPrice.map((price) => (
+            <Button
+              key={price}
+              variant='outline'
+              className='rounded-full capitalize'
+              onClick={() => handleRemoveParam(price, 'price')}
+            >
+              Price: {price}
+              <X />
+            </Button>
+          ))}
       </div>
     </div>
   );
