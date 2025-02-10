@@ -15,7 +15,7 @@ type ProductsPageProps = {
 const ProductsPage = async ({ searchParams }: ProductsPageProps) => {
   const params = await searchParams;
 
-  const { products } = await getAllProductsAction(params);
+  const { products, pagination } = await getAllProductsAction(params);
 
   if (!products) notFound();
 
@@ -28,7 +28,7 @@ const ProductsPage = async ({ searchParams }: ProductsPageProps) => {
         <ProductsGrid products={products} />
       </div>
 
-      <ProductsPagination />
+      <ProductsPagination pagination={pagination} />
     </div>
   );
 };

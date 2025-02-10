@@ -28,8 +28,12 @@ export const getAllProductsAction = async (searchParams: SearchParams) => {
       ? `&filters[variant][price][$lte]=${searchParams.price}`
       : '';
 
+  const queryPagination = searchParams.page
+    ? `&pagination[page]=${searchParams.page}&pagination[pageSize]=3`
+    : `&pagination[page]=1&pagination[pageSize]=3`;
+
   const url = new URL(
-    `/api/products?populate[variant][populate][0]=images${queryCategories}${queryColor}${querySize}${queryPrice}`,
+    `/api/products?populate[variant][populate][0]=images${queryCategories}${queryColor}${querySize}${queryPrice}${queryPagination}`,
     STRAPI_URL,
   );
 

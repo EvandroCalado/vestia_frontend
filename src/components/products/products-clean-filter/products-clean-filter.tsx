@@ -11,12 +11,19 @@ export const ProductsCleanFilter = () => {
   const pathName = usePathname();
   const searchParams = useSearchParams();
 
-  if (!searchParams.toString()) return null;
-
   const paramCategories = searchParams.getAll('categories');
   const paramColor = searchParams.getAll('color');
   const paramSize = searchParams.getAll('size');
   const paramPrice = searchParams.getAll('price');
+
+  const allParams = Array.from([
+    ...paramCategories,
+    ...paramColor,
+    ...paramSize,
+    ...paramPrice,
+  ]);
+
+  if (!allParams || allParams.length === 0) return null;
 
   const handleRemoveParam = (
     paramToRemove: string | undefined,

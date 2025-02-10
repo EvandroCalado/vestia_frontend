@@ -1,4 +1,4 @@
-import { Product } from '@/types';
+import { Pagination, Product } from '@/types';
 
 type StrapiImage = {
   formats: {
@@ -44,12 +44,7 @@ type StrapiProducts = {
 
 type Return = {
   products: Product[];
-  pagination: {
-    page: number;
-    pageSize: number;
-    pageCount: number;
-    total: number;
-  };
+  pagination: Pagination;
 };
 
 export const productsMapper = (strapiProducts: StrapiProducts): Return => {
