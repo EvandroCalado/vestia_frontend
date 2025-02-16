@@ -45,7 +45,10 @@ const ProductsPage = async ({ searchParams }: ProductsPageProps) => {
         <ProductsGrid products={products} />
       </div>
 
-      <ProductsPagination pagination={pagination} />
+      <ProductsPagination
+        pagination={pagination}
+        refetchProducts={refetchProducts}
+      />
     </div>
   );
 };
