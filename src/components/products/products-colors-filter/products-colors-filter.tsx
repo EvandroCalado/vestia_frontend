@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { parseAsString, useQueryState } from 'nuqs';
 
 const colors = [
   { title: 'red', color: '#FF0000' },
@@ -17,21 +16,24 @@ const colors = [
   { title: 'gray', color: '#808080' },
 ];
 
-export const ProductsColorsFilter = () => {
-  const [color, setColor] = useState<string | null>(null);
+type ProductsColorsFilterProps = {
+  refetchProducts: () => Promise<void>;
+};
 
-  const searchParams = useSearchParams();
+export const ProductsColorsFilter = ({
+  refetchProducts,
+}: ProductsColorsFilterProps) => {
+  const [color, setColor] = useQueryState(
+    'color',
+    parseAsString.withDefault(''),
+  );
 
-  useEffect(() => {
-    const currentColor = searchParams.get('color');
-
-    setColor(currentColor);
-  }, [searchParams]);
-
-  const handleClick = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-
+  const handleColors = (value: string) => {
     setColor(value);
+
+    setTimeout(() => {
+      refetchProducts();
+    }, 300);
   };
 
   return (
@@ -47,7 +49,7 @@ export const ProductsColorsFilter = () => {
             radioGroup='color'
             checked={item.title === color}
             value={item.title}
-            onChange={handleClick}
+            onChange={(e) => handleColors(e.target.value)}
             style={{ backgroundColor: item.color }}
             className={`h-6 w-6 cursor-pointer appearance-none rounded-full border-2 border-transparent checked:ring-[1px] checked:ring-black checked:ring-offset-2 focus:outline-none`}
           />

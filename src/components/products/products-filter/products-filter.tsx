@@ -41,7 +41,7 @@ export const ProductsFilter = ({ refetchProducts }: ProductsFilterProps) => {
         </Button>
 
         <ProductsCategoriesFilter refetchProducts={refetchProducts} />
-        <ProductsColorsFilter />
+        <ProductsColorsFilter refetchProducts={refetchProducts} />
         <ProductsSizesFilter />
         <ProductsPriceFilter />
 
