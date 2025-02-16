@@ -1,23 +1,24 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { parseAsString, useQueryState } from 'nuqs';
 
 const sizes = ['s', 'm', 'x', 'xl', 'xxl'];
 
-export const ProductsSizesFilter = () => {
-  const [size, setSize] = useState<string | null>(null);
+type ProductsSizesFilterProps = {
+  refetchProducts: () => Promise<void>;
+};
 
-  const searchParams = useSearchParams();
+export const ProductsSizesFilter = ({
+  refetchProducts,
+}: ProductsSizesFilterProps) => {
+  const [size, setSize] = useQueryState('size', parseAsString.withDefault(''));
 
-  useEffect(() => {
-    setSize(searchParams.get('size'));
-  }, [searchParams]);
-
-  const handleClick = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-
+  const handleSize = (value: string) => {
     setSize(value);
+
+    setTimeout(() => {
+      refetchProducts();
+    }, 300);
   };
 
   return (
@@ -32,7 +33,7 @@ export const ProductsSizesFilter = () => {
               name='size'
               radioGroup='size'
               value={item}
-              onChange={handleClick}
+              onChange={(e) => handleSize(e.target.value)}
               checked={item === size}
               className={`h-10 w-10 cursor-pointer appearance-none rounded border checked:border-black checked:ring-offset-2 focus:outline-none`}
             />

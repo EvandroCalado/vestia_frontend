@@ -42,7 +42,7 @@ export const ProductsFilter = ({ refetchProducts }: ProductsFilterProps) => {
 
         <ProductsCategoriesFilter refetchProducts={refetchProducts} />
         <ProductsColorsFilter refetchProducts={refetchProducts} />
-        <ProductsSizesFilter />
+        <ProductsSizesFilter refetchProducts={refetchProducts} />
         <ProductsPriceFilter />
 
         <Button className='w-full' type='submit'>
