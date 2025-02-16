@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
+
 import '@/styles/globals.css';
 
 const primary = Inter({
@@ -23,7 +25,9 @@ export const RootLayout = ({
 }>) => {
   return (
     <html lang='pt-BR'>
-      <body className={`${primary.variable} antialiased`}>{children}</body>
+      <body className={`${primary.variable} antialiased`}>
+        <NuqsAdapter>{children}</NuqsAdapter>
+      </body>
     </html>
   );
 };

@@ -10,7 +10,11 @@ import { ProductsColorsFilter } from '../products-colors-filter';
 import { ProductsPriceFilter } from '../products-price-filter';
 import { ProductsSizesFilter } from '../products-sizes-filter';
 
-export const ProductsFilter = () => {
+type ProductsFilterProps = {
+  refetchProducts: () => Promise<void>;
+};
+
+export const ProductsFilter = ({ refetchProducts }: ProductsFilterProps) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   return (
@@ -36,7 +40,7 @@ export const ProductsFilter = () => {
           <X />
         </Button>
 
-        <ProductsCategoriesFilter />
+        <ProductsCategoriesFilter refetchProducts={refetchProducts} />
         <ProductsColorsFilter />
         <ProductsSizesFilter />
         <ProductsPriceFilter />

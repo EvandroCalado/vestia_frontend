@@ -4,33 +4,28 @@ import { STRAPI_URL } from '@/lib/utils';
 import { productsMapper } from '@/mappers';
 import { StrapiAllProducts } from '@/types';
 
-type SearchParams = { [key: string]: string | string[] | undefined };
+type SearchParams = {
+  categories: string;
+  color: string;
+  size: string;
+  price: number;
+  page: number;
+};
 
 export const getAllProductsAction = async (searchParams: SearchParams) => {
-  const paramCategories = Array.isArray(searchParams.categories)
-    ? searchParams.categories
-    : [searchParams.categories].filter(Boolean);
+  const { categories, color, size, price, page } = searchParams;
 
-  const queryCategories = paramCategories
-    .map((category) => `&filters[categories][$eq]=${category}`)
-    .join('');
-
-  const queryColor = searchParams.color
-    ? `&filters[variant][title][$eq]=${searchParams.color}`
+  const queryCategories = categories
+    ? `&filters[categories][$eq]=${categories}`
     : '';
 
-  const querySize = searchParams.size
-    ? `&filters[variant][size][$eq]=${searchParams.size}`
-    : '';
+  const queryColor = color ? `&filters[variant][title][$eq]=${color}` : '';
 
-  const queryPrice =
-    searchParams.price && Number(searchParams.price) > 0
-      ? `&filters[variant][price][$lte]=${searchParams.price}`
-      : '';
+  const querySize = size ? `&filters[variant][size][$eq]=${size}` : '';
 
-  const queryPagination = searchParams.page
-    ? `&pagination[page]=${searchParams.page}&pagination[pageSize]=3`
-    : `&pagination[page]=1&pagination[pageSize]=3`;
+  const queryPrice = price ? `&filters[variant][price][$lte]=${price}` : '';
+
+  const queryPagination = `&pagination[page]=${page}&pagination[pageSize]=3`;
 
   const url = new URL(
     `/api/products?populate[variant][populate][0]=images${queryCategories}${queryColor}${querySize}${queryPrice}${queryPagination}`,
@@ -38,7 +33,10 @@ export const getAllProductsAction = async (searchParams: SearchParams) => {
   );
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      next: { tags: ['products'] },
+    });
+
     const products: StrapiAllProducts = await response.json();
 
     if (!response.ok) {
