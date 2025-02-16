@@ -1,18 +1,28 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { parseAsInteger, useQueryState } from 'nuqs';
 
 import { currencyFormat } from '@/utils';
 
-export const ProductsPriceFilter = () => {
-  const [price, setPrice] = useState<number>(0);
+type ProductsPriceFilterProps = {
+  refetchProducts: () => Promise<void>;
+};
 
-  const searchParams = useSearchParams();
+export const ProductsPriceFilter = ({
+  refetchProducts,
+}: ProductsPriceFilterProps) => {
+  const [price, setPrice] = useQueryState(
+    'price',
+    parseAsInteger.withDefault(0),
+  );
 
-  useEffect(() => {
-    setPrice(Number(searchParams.get('price')));
-  }, [searchParams]);
+  const handlePrice = (value: number) => {
+    setPrice(value);
+
+    setTimeout(() => {
+      refetchProducts();
+    }, 300);
+  };
 
   return (
     <div>
@@ -25,7 +35,7 @@ export const ProductsPriceFilter = () => {
           step={1}
           name='price'
           value={price}
-          onChange={(e) => setPrice(Number(e.target.value))}
+          onChange={(e) => handlePrice(Number(e.target.value))}
           className='w-full accent-primary'
         />
         <div className='flex items-center justify-between'>
