@@ -16,7 +16,7 @@ export const Breadcrumb = () => {
 
   return (
     <>
-      <h2 className='mb-4 capitalize'>{path}</h2>
+      <h4 className='mb-4 capitalize'>{path}</h4>
 
       <BreadCrumb>
         <BreadcrumbList>

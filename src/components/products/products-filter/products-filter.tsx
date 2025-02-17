@@ -26,9 +26,8 @@ export const ProductsFilter = ({ refetchProducts }: ProductsFilterProps) => {
         <h3>Filters</h3>
       </div>
 
-      <form
-        action='/products'
-        className={`h-max rounded-lg border bg-white px-5 py-3 md:block md:w-72 md:px-5 md:py-7 ${isOpenMenu ? 'block transition-all duration-150 max-md:fixed max-md:inset-0 max-md:z-20 max-md:h-full' : 'hidden'}`}
+      <div
+        className={`h-max rounded-lg border bg-white px-5 py-3 md:block md:w-72 md:p-5 ${isOpenMenu ? 'block transition-all duration-150 max-md:fixed max-md:inset-0 max-md:z-20 max-md:h-full' : 'hidden'}`}
       >
         <Button
           type='button'
@@ -44,11 +43,7 @@ export const ProductsFilter = ({ refetchProducts }: ProductsFilterProps) => {
         <ProductsColorsFilter refetchProducts={refetchProducts} />
         <ProductsSizesFilter refetchProducts={refetchProducts} />
         <ProductsPriceFilter refetchProducts={refetchProducts} />
-
-        <Button className='w-full' type='submit'>
-          Apply
-        </Button>
-      </form>
+      </div>
     </div>
   );
 };

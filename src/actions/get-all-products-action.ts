@@ -21,15 +21,10 @@ export const getAllProductsAction = async (searchParams: SearchParams) => {
   const queryCategories = categories
     ? `&filters[categories][$eq]=${categories}`
     : '';
-
   const queryColor = color ? `&filters[variant][title][$eq]=${color}` : '';
-
   const querySize = size ? `&filters[variant][size][$eq]=${size}` : '';
-
   const queryPrice = price ? `&filters[variant][price][$lte]=${price}` : '';
-
   const queryPagination = `&pagination[page]=${page}&pagination[pageSize]=3`;
-
   const querySort = sort ? `&sort=title:${sort}` : '';
 
   const url = new URL(

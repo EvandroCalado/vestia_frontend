@@ -1,6 +1,9 @@
 'use client';
 
+import { X } from 'lucide-react';
 import { parseAsString, useQueryState } from 'nuqs';
+
+import { Badge } from '@/components/ui';
 
 const sizes = ['s', 'm', 'x', 'xl', 'xxl'];
 
@@ -13,7 +16,7 @@ export const ProductsSizesFilter = ({
 }: ProductsSizesFilterProps) => {
   const [size, setSize] = useQueryState('size', parseAsString.withDefault(''));
 
-  const handleSize = (value: string) => {
+  const handleSize = (value: string | null) => {
     setSize(value);
 
     setTimeout(() => {
@@ -22,7 +25,17 @@ export const ProductsSizesFilter = ({
   };
 
   return (
-    <div className='border-zinc-200 pb-5 md:mb-5 md:border-b'>
+    <div className='relative border-zinc-200 pb-5 md:mb-5 md:border-b'>
+      {size && (
+        <Badge
+          onClick={() => handleSize(null)}
+          variant='outline'
+          className='absolute right-0 cursor-pointer'
+        >
+          Clear <X size={12} />
+        </Badge>
+      )}
+
       <h5 className='mb-2 font-medium capitalize md:mb-6'>sizes</h5>
 
       <div className='flex flex-wrap items-center gap-4'>

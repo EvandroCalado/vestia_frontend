@@ -1,8 +1,9 @@
 'use client';
 
+import { X } from 'lucide-react';
 import { parseAsString, useQueryState } from 'nuqs';
 
-import { Checkbox } from '@/components/ui';
+import { Badge, Checkbox } from '@/components/ui';
 
 const categoriesList = [
   'shirts',
@@ -25,7 +26,7 @@ export const ProductsCategoriesFilter = ({
     parseAsString.withDefault(''),
   );
 
-  const handleCategory = (value: string) => {
+  const handleCategory = (value: string | null) => {
     setCategories(value);
 
     setTimeout(() => {
@@ -34,11 +35,21 @@ export const ProductsCategoriesFilter = ({
   };
 
   return (
-    <div className='w-full space-y-4 border-zinc-200 pb-5 md:mb-5 md:border-b'>
+    <div className='relative w-full border-zinc-200 pb-5 md:mb-5 md:border-b'>
+      {categories && (
+        <Badge
+          onClick={() => handleCategory(null)}
+          variant='outline'
+          className='absolute right-0 cursor-pointer'
+        >
+          Clear <X size={12} />
+        </Badge>
+      )}
+
       <h5 className='mb-2 font-medium capitalize md:mb-6'>categories</h5>
 
       {categoriesList.map((category) => (
-        <div key={category} className='flex items-center gap-2'>
+        <div key={category} className='mb-2 flex items-center gap-2'>
           <Checkbox
             id={category}
             name='categories'

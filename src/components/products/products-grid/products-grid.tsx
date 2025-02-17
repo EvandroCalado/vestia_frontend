@@ -13,7 +13,6 @@ import {
   SelectValue,
 } from '@/components/ui';
 import { Pagination, Product } from '@/types';
-import { ProductsCleanFilter } from '../products-clean-filter';
 
 type ProductsGridProps = {
   products?: Product[];
@@ -28,6 +27,10 @@ export const ProductsGrid = ({
 }: ProductsGridProps) => {
   const [sort, setSort] = useQueryState('sort', parseAsString.withDefault(''));
   const { page, pageSize, total } = pagination;
+
+  const initialPageItem = pageSize * page - 2;
+  const lastPageItem = pageSize * page >= total ? total : pageSize * page;
+  const totalItem = total;
 
   const handleSort = (value: string) => {
     setSort(value);
@@ -54,11 +57,9 @@ export const ProductsGrid = ({
 
   return (
     <div className='mt-16 md:mt-0'>
-      <ProductsCleanFilter />
-
       <div className='flex items-center justify-between text-zinc-400'>
         <span className='text-xs sm:text-sm'>
-          Showing {pageSize * page - 2}-{pageSize * page} of {total} results
+          Showing {initialPageItem}-{lastPageItem} of {totalItem} results
         </span>
 
         <Select value={sort} onValueChange={(value) => handleSort(value)}>

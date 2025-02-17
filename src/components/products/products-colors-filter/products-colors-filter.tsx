@@ -1,6 +1,9 @@
 'use client';
 
+import { X } from 'lucide-react';
 import { parseAsString, useQueryState } from 'nuqs';
+
+import { Badge } from '@/components/ui';
 
 const colors = [
   { title: 'red', color: '#FF0000' },
@@ -28,7 +31,7 @@ export const ProductsColorsFilter = ({
     parseAsString.withDefault(''),
   );
 
-  const handleColors = (value: string) => {
+  const handleColors = (value: string | null) => {
     setColor(value);
 
     setTimeout(() => {
@@ -37,7 +40,17 @@ export const ProductsColorsFilter = ({
   };
 
   return (
-    <div className='border-zinc-200 pb-5 md:mb-5 md:border-b'>
+    <div className='relative border-zinc-200 pb-5 md:mb-5 md:border-b'>
+      {color && (
+        <Badge
+          onClick={() => handleColors(null)}
+          variant='outline'
+          className='absolute right-0 cursor-pointer'
+        >
+          Clear <X size={12} />
+        </Badge>
+      )}
+
       <h5 className='mb-2 font-medium capitalize md:mb-6'>colors</h5>
 
       <div className='flex flex-wrap items-center gap-4'>
