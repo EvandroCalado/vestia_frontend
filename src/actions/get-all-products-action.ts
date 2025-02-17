@@ -10,10 +10,13 @@ type SearchParams = {
   size: string;
   price: number;
   page: number;
+  sort: string;
 };
 
 export const getAllProductsAction = async (searchParams: SearchParams) => {
-  const { categories, color, size, price, page } = searchParams;
+  const { categories, color, size, price, page, sort } = searchParams;
+
+  console.log(sort);
 
   const queryCategories = categories
     ? `&filters[categories][$eq]=${categories}`
@@ -27,8 +30,10 @@ export const getAllProductsAction = async (searchParams: SearchParams) => {
 
   const queryPagination = `&pagination[page]=${page}&pagination[pageSize]=3`;
 
+  const querySort = sort ? `&sort=title:${sort}` : '';
+
   const url = new URL(
-    `/api/products?populate[variant][populate][0]=images${queryCategories}${queryColor}${querySize}${queryPrice}${queryPagination}`,
+    `/api/products?populate[variant][populate][0]=images${queryCategories}${queryColor}${querySize}${queryPrice}${queryPagination}${querySort}`,
     STRAPI_URL,
   );
 

@@ -1,4 +1,7 @@
+'use client';
+
 import { PackageOpen } from 'lucide-react';
+import { parseAsString, useQueryState } from 'nuqs';
 
 import { ProductCard } from '@/components/product';
 import {
@@ -9,23 +12,31 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui';
-import { Product } from '@/types';
+import { Pagination, Product } from '@/types';
 import { ProductsCleanFilter } from '../products-clean-filter';
-
-const categoriesList = [
-  'shirts',
-  'pants',
-  'jackets',
-  'shorts',
-  'activewear',
-  'accessories',
-];
 
 type ProductsGridProps = {
   products?: Product[];
+  pagination: Pagination;
+  refetchProducts: () => Promise<void>;
 };
 
-export const ProductsGrid = ({ products }: ProductsGridProps) => {
+export const ProductsGrid = ({
+  products,
+  pagination,
+  refetchProducts,
+}: ProductsGridProps) => {
+  const [sort, setSort] = useQueryState('sort', parseAsString.withDefault(''));
+  const { page, pageSize, total } = pagination;
+
+  const handleSort = (value: string) => {
+    setSort(value);
+
+    setTimeout(() => {
+      refetchProducts();
+    }, 300);
+  };
+
   if (!products || products.length === 0) {
     return (
       <div className='flex h-[50vh] w-full flex-col items-center justify-center gap-6'>
@@ -46,24 +57,19 @@ export const ProductsGrid = ({ products }: ProductsGridProps) => {
       <ProductsCleanFilter />
 
       <div className='flex items-center justify-between text-zinc-400'>
-        <span className='text-xs sm:text-sm'>Showing 1-9 of 36 results</span>
+        <span className='text-xs sm:text-sm'>
+          Showing {pageSize * page - 2}-{pageSize * page} of {total} results
+        </span>
 
-        <Select>
+        <Select value={sort} onValueChange={(value) => handleSort(value)}>
           <SelectTrigger className='w-28 sm:w-40'>
-            <SelectValue placeholder='SORT BY' />
+            <SelectValue placeholder='ORDER BY' />
           </SelectTrigger>
 
           <SelectContent>
             <SelectGroup>
-              {categoriesList.map((category) => (
-                <SelectItem
-                  key={category}
-                  value={category}
-                  className='capitalize'
-                >
-                  {category}
-                </SelectItem>
-              ))}
+              <SelectItem value='asc'>Ascending</SelectItem>
+              <SelectItem value='desc'>Descending</SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>

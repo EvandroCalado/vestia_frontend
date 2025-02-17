@@ -17,7 +17,7 @@ type ProductsPageProps = {
 };
 
 const ProductsPage = async ({ searchParams }: ProductsPageProps) => {
-  const { categories, color, size, price, page } =
+  const { categories, color, size, price, page, sort } =
     await loadSearchParams(searchParams);
 
   const { products, pagination } = await getAllProductsAction({
@@ -26,6 +26,7 @@ const ProductsPage = async ({ searchParams }: ProductsPageProps) => {
     size,
     price,
     page,
+    sort,
   });
 
   if (!products) notFound();
@@ -42,7 +43,11 @@ const ProductsPage = async ({ searchParams }: ProductsPageProps) => {
 
       <div className='flex w-full justify-center gap-8'>
         <ProductsFilter refetchProducts={refetchProducts} />
-        <ProductsGrid products={products} />
+        <ProductsGrid
+          products={products}
+          pagination={pagination}
+          refetchProducts={refetchProducts}
+        />
       </div>
 
       <ProductsPagination
