@@ -15,22 +15,18 @@ export const Breadcrumb = () => {
   const path = usePathname().replace('/', '');
 
   return (
-    <>
-      <h4 className='mb-4 capitalize'>{path}</h4>
+    <BreadCrumb>
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink href='/'>Home</BreadcrumbLink>
+        </BreadcrumbItem>
 
-      <BreadCrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink href='/'>Home</BreadcrumbLink>
-          </BreadcrumbItem>
+        <BreadcrumbSeparator />
 
-          <BreadcrumbSeparator />
-
-          <BreadcrumbItem>
-            <BreadcrumbPage className='capitalize'>{path}</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </BreadCrumb>
-    </>
+        <BreadcrumbItem>
+          <BreadcrumbPage className='capitalize'>{path}</BreadcrumbPage>
+        </BreadcrumbItem>
+      </BreadcrumbList>
+    </BreadCrumb>
   );
 };

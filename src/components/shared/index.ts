@@ -1,3 +1,4 @@
+export * from '../products/products-search';
 export * from './breadcrumb';
 export * from './footer';
 export * from './header';
@@ -7,4 +8,3 @@ export * from './menu';
 export * from './nav';
 export * from './pop-up-header';
 export * from './profile-menu';
-export * from './search';

@@ -9,7 +9,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background font-primary text-foreground;
+    @apply scroll-smooth bg-background font-primary text-foreground;
   }
   h1 {
     @apply text-[32px] font-semibold md:text-[40px];
