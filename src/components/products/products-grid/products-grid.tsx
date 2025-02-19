@@ -37,7 +37,7 @@ export const ProductsGrid = ({
 
     setTimeout(() => {
       refetchProducts();
-    }, 300);
+    });
   };
 
   if (!products || products.length === 0) {
@@ -56,7 +56,7 @@ export const ProductsGrid = ({
   }
 
   return (
-    <div className='mt-16 md:mt-0'>
+    <div className='mt-16 w-full md:mt-0'>
       <div className='flex items-center justify-between text-zinc-400'>
         <span className='text-xs sm:text-sm'>
           Showing {initialPageItem}-{lastPageItem} of {totalItem} results

@@ -32,7 +32,7 @@ export const ProductsPagination = ({
 
     setTimeout(() => {
       refetchProducts();
-    }, 300);
+    });
   };
 
   const renderPageNumbers = () => {

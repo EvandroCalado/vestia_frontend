@@ -21,7 +21,7 @@ export const ProductsPriceFilter = ({
 
     setTimeout(() => {
       refetchProducts();
-    }, 300);
+    });
   };
 
   return (

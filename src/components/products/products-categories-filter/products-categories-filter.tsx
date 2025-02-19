@@ -31,7 +31,7 @@ export const ProductsCategoriesFilter = ({
 
     setTimeout(() => {
       refetchProducts();
-    }, 300);
+    });
   };
 
   return (

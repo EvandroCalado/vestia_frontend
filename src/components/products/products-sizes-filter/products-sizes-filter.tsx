@@ -21,7 +21,7 @@ export const ProductsSizesFilter = ({
 
     setTimeout(() => {
       refetchProducts();
-    }, 300);
+    });
   };
 
   return (

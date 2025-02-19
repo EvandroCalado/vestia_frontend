@@ -36,7 +36,7 @@ export const ProductsColorsFilter = ({
 
     setTimeout(() => {
       refetchProducts();
-    }, 300);
+    });
   };
 
   return (
