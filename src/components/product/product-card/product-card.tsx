@@ -17,7 +17,7 @@ export type ProductCardProps = {
 
 export const ProductCard = ({ product }: ProductCardProps) => {
   return (
-    <Card className='max-w-[320px] overflow-hidden'>
+    <Card className='max-w-xs overflow-hidden'>
       <Link href={`/products/${product.slug}`} className='group'>
         <CardHeader className='overflow-hidden p-0'>
           <Image
@@ -27,7 +27,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
             height={300}
             priority
             sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-            className='w-auto rounded-tl-xl rounded-tr-xl object-contain duration-300 group-hover:scale-105'
+            className='m-5 max-h-52 w-auto rounded-tl-xl rounded-tr-xl object-contain duration-300 group-hover:scale-105'
           />
         </CardHeader>
         <CardContent>
