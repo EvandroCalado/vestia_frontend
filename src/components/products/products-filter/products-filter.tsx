@@ -8,6 +8,7 @@ import { Button } from '@/components/ui';
 import { ProductsCategoriesFilter } from '../products-categories-filter';
 import { ProductsColorsFilter } from '../products-colors-filter';
 import { ProductsPriceFilter } from '../products-price-filter';
+import { ProductsSearch } from '../products-search';
 import { ProductsSizesFilter } from '../products-sizes-filter';
 
 type ProductsFilterProps = {
@@ -39,6 +40,7 @@ export const ProductsFilter = ({ refetchProducts }: ProductsFilterProps) => {
           <X />
         </Button>
 
+        <ProductsSearch refetchProducts={refetchProducts} />
         <ProductsCategoriesFilter refetchProducts={refetchProducts} />
         <ProductsColorsFilter refetchProducts={refetchProducts} />
         <ProductsSizesFilter refetchProducts={refetchProducts} />

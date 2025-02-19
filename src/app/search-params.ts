@@ -7,6 +7,7 @@ const coordinatesSearchParams = {
   price: parseAsInteger.withDefault(0),
   page: parseAsInteger.withDefault(1),
   sort: parseAsString.withDefault(''),
+  search: parseAsString.withDefault(''),
 };
 
 export const loadSearchParams = createLoader(coordinatesSearchParams);

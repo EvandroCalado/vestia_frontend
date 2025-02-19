@@ -17,7 +17,7 @@ type ProductsPageProps = {
 };
 
 const ProductsPage = async ({ searchParams }: ProductsPageProps) => {
-  const { categories, color, size, price, page, sort } =
+  const { categories, color, size, price, page, sort, search } =
     await loadSearchParams(searchParams);
 
   const { products, pagination } = await getAllProductsAction({
@@ -27,6 +27,7 @@ const ProductsPage = async ({ searchParams }: ProductsPageProps) => {
     price,
     page,
     sort,
+    search,
   });
 
   if (!products) notFound();
