@@ -12,9 +12,7 @@ export const HomePage = async () => {
     <div className='flex h-full flex-col items-center justify-center space-y-8'>
       <Hero {...banners[0]} />
       <Services />
-      {/* <BestSelling /> */}
       <Hero {...banners[1]} />
-      {/* <FeaturedAndLatest /> */}
     </div>
   );
 };
