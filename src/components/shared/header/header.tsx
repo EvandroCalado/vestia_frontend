@@ -4,7 +4,6 @@ import { Menu } from '../menu';
 import { Nav } from '../nav';
 import { PopUpHeader } from '../pop-up-header';
 import { ProfileMenu } from '../profile-menu';
-import { Search } from '../search';
 
 export const Header = () => {
   return (
@@ -13,7 +12,6 @@ export const Header = () => {
       <header className='container mx-auto flex items-center justify-between p-5'>
         <Logo />
         <Nav className='max-md:hidden' />
-        <Search className='max-md:hidden' />
 
         <div className='flex items-center gap-4'>
           <CartMenu />
