@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Search } from '.';
+import { ProductsSearch } from './products-search';
 
 const meta: Meta = {
-  title: 'Components/Shared/Search',
-  component: Search,
+  title: 'Components/Products/ProductsSearch',
+  component: ProductsSearch,
   parameters: {
     layout: 'centered',
   },
@@ -13,6 +13,6 @@ const meta: Meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof Search>;
+type Story = StoryObj<typeof ProductsSearch>;
 
 export const Default: Story = {};
